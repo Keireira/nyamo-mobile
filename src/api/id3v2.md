@@ -1,3 +1,5 @@
+https://picard-docs.musicbrainz.org/downloads/MusicBrainz_Picard_Tag_Map.html
+
 TPE1
   The 'Lead artist/Lead performer/Soloist/Performing group' is
   used for the main artist.

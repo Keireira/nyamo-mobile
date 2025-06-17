@@ -1,6 +1,10 @@
 type EXPLICIT_STATUS = 'explicit' | 'clean' | '' | 1 | 2 | 4;
 type ACTUAL_MEDIA_TYPE = 'song' | 'album' | 'artist';
 type GENERIC_MEDIA_TYPE = 'music' | 'podcast' | 'audiobook' | 'video';
+
+/**
+ * @see https://github.com/navidrome/navidrome/blob/873905bdf6e3b25afcc8abf2f55ec96e0e8b5f38/model/participants.go#L13
+ */
 type CONTRIBUTOR_ROLE =
 	| 'invalid'
 	| 'artist'
@@ -20,7 +24,7 @@ type PODCAST_STATUS = 'new' | 'downloading' | 'completed' | 'error' | 'deleted' 
 
 /**
  * An album from ID3 tags.
- * https://opensubsonic.netlify.app/docs/responses/albumid3/
+ * @see https://opensubsonic.netlify.app/docs/responses/albumid3/
  */
 export type AlbumID3 = {
 	/** The id of the album */
@@ -117,7 +121,7 @@ export type AlbumID3 = {
 
 /**
  * An extension of AlbumID3 with song Child entries.
- * https://opensubsonic.netlify.app/docs/responses/albumid3withsongs/
+ * @see https://opensubsonic.netlify.app/docs/responses/albumid3withsongs/
  */
 export type AlbumID3WithSongs = AlbumID3 & {
 	song?: Child[];
@@ -125,7 +129,7 @@ export type AlbumID3WithSongs = AlbumID3 & {
 
 /**
  * Album list.
- * https://opensubsonic.netlify.app/docs/responses/albumlist/
+ * @see https://opensubsonic.netlify.app/docs/responses/albumlist/
  */
 export type AlbumList = {
 	/** Artist albums */
@@ -134,7 +138,7 @@ export type AlbumList = {
 
 /**
  * [ID3] Album list with ID3 tags.
- * https://opensubsonic.netlify.app/docs/responses/albumlist2/
+ * @see https://opensubsonic.netlify.app/docs/responses/albumlist2/
  */
 export type AlbumListID3 = {
 	/** Artist albums */
@@ -143,7 +147,7 @@ export type AlbumListID3 = {
 
 /**
  * A genre returned in list of genres for an item.
- * https://opensubsonic.netlify.app/docs/responses/itemgenre/
+ * @see https://opensubsonic.netlify.app/docs/responses/itemgenre/
  */
 export type ItemGenre = {
 	/** Genre name */
@@ -152,7 +156,7 @@ export type ItemGenre = {
 
 /**
  * A disc title for an album.
- * https://opensubsonic.netlify.app/docs/responses/disctitle/
+ * @see https://opensubsonic.netlify.app/docs/responses/disctitle/
  */
 export type DiscTitle = {
 	/** The disc number. */
@@ -164,7 +168,7 @@ export type DiscTitle = {
 
 /**
  * A date for a media item that may be just a year, or year-month, or full date.
- * https://opensubsonic.netlify.app/docs/responses/itemdate/
+ * @see https://opensubsonic.netlify.app/docs/responses/itemdate/
  */
 export type ItemDate = {
 	/** The year */
@@ -179,7 +183,7 @@ export type ItemDate = {
 
 /**
  * A record label for an album.
- * https://opensubsonic.netlify.app/docs/responses/recordlabel/
+ * @see https://opensubsonic.netlify.app/docs/responses/recordlabel/
  */
 export type RecordLabel = {
 	/** The record label name. */
@@ -188,7 +192,7 @@ export type RecordLabel = {
 
 /**
  * Album info.
- * https://opensubsonic.netlify.app/docs/responses/albuminfo/
+ * @see https://opensubsonic.netlify.app/docs/responses/albuminfo/
  */
 export type AlbumInfo = {
 	/** Album notes */
@@ -212,7 +216,7 @@ export type AlbumInfo = {
 
 /**
  * Artist details.
- * https://opensubsonic.netlify.app/docs/responses/artist/
+ * @see https://opensubsonic.netlify.app/docs/responses/artist/
  */
 export type Artist = {
 	/** Artist id */
@@ -236,7 +240,7 @@ export type Artist = {
 
 /**
  * An artist from ID3 tags.
- * https://opensubsonic.netlify.app/docs/responses/artistid3/
+ * @see https://opensubsonic.netlify.app/docs/responses/artistid3/
  */
 export type ArtistID3 = {
 	/** The ID of the artist. */
@@ -265,15 +269,13 @@ export type ArtistID3 = {
 
 	/**
 	 * The list of all roles this artist has in the library.
-	 *
-	 * @see https://github.com/navidrome/navidrome/blob/873905bdf6e3b25afcc8abf2f55ec96e0e8b5f38/model/participants.go#L13
 	 */
 	roles?: CONTRIBUTOR_ROLE[];
 };
 
 /**
  * Artist info.
- * https://opensubsonic.netlify.app/docs/responses/artistinfo/
+ * @see https://opensubsonic.netlify.app/docs/responses/artistinfo/
  */
 export type ArtistInfoBase = {
 	/** Artist biography */
@@ -305,7 +307,7 @@ export type ArtistInfoID3 = ArtistInfoBase & {
 
 /**
  * A list of indexed Artists.
- * https://opensubsonic.netlify.app/docs/responses/artistsid3/
+ * @see https://opensubsonic.netlify.app/docs/responses/artistsid3/
  */
 export type ArtistsID3 = {
 	/** List of ignored articles space separated */
@@ -320,7 +322,7 @@ export type ArtistsID3 = {
 
 /**
  * An extension of ArtistID3 with AlbumID3.
- * https://opensubsonic.netlify.app/docs/responses/artistwithalbumsid3/
+ * @see https://opensubsonic.netlify.app/docs/responses/artistwithalbumsid3/
  */
 export type ArtistWithAlbumsID3 = ArtistID3 & {
 	album?: AlbumID3[];
@@ -328,7 +330,7 @@ export type ArtistWithAlbumsID3 = ArtistID3 & {
 
 /**
  * SimilarSongs list.
- * https://opensubsonic.netlify.app/docs/responses/similarsongs/
+ * @see https://opensubsonic.netlify.app/docs/responses/similarsongs/
  */
 export type SimilarSongs = {
 	song?: Child[];
@@ -336,7 +338,7 @@ export type SimilarSongs = {
 
 /**
  * [ID3] SimilarSongs2 list.
- * https://opensubsonic.netlify.app/docs/responses/similarsongs2/
+ * @see https://opensubsonic.netlify.app/docs/responses/similarsongs2/
  */
 export type SimilarSongsID3 = {
 	song?: Child[];
@@ -344,7 +346,7 @@ export type SimilarSongsID3 = {
 
 /**
  * TopSongs list.
- * https://opensubsonic.netlify.app/docs/responses/topsongs/
+ * @see https://opensubsonic.netlify.app/docs/responses/topsongs/
  */
 export type TopSongs = {
 	song?: Child[];
@@ -352,7 +354,7 @@ export type TopSongs = {
 
 /**
  * Songs list.
- * https://opensubsonic.netlify.app/docs/responses/songs/
+ * @see https://opensubsonic.netlify.app/docs/responses/songs/
  */
 export type Songs = {
 	/** List of songs */
@@ -361,7 +363,7 @@ export type Songs = {
 
 /**
  * Bookmark.
- * https://opensubsonic.netlify.app/docs/responses/bookmark/
+ * @see https://opensubsonic.netlify.app/docs/responses/bookmark/
  */
 export type Bookmark = {
 	/** Bookmark position in seconds */
@@ -385,7 +387,7 @@ export type Bookmark = {
 
 /**
  * Bookmarks list.
- * https://opensubsonic.netlify.app/docs/responses/bookmarks/
+ * @see https://opensubsonic.netlify.app/docs/responses/bookmarks/
  */
 export type Bookmarks = {
 	bookmark?: Bookmark[];
@@ -393,7 +395,7 @@ export type Bookmarks = {
 
 /**
  * A chatMessage.
- * https://opensubsonic.netlify.app/docs/responses/chatmessage/
+ * @see https://opensubsonic.netlify.app/docs/responses/chatmessage/
  */
 export type ChatMessage = {
 	/** Username */
@@ -408,7 +410,7 @@ export type ChatMessage = {
 
 /**
  * Chat messages list.
- * https://opensubsonic.netlify.app/docs/responses/chatmessages/
+ * @see https://opensubsonic.netlify.app/docs/responses/chatmessages/
  */
 export type ChatMessages = {
 	/** List of chatMessage */
@@ -417,7 +419,7 @@ export type ChatMessages = {
 
 /**
  * A media.
- * https://opensubsonic.netlify.app/docs/responses/child/
+ * @see https://opensubsonic.netlify.app/docs/responses/child/
  */
 export type Child = {
 	/** The id of the media */
@@ -590,7 +592,7 @@ export type Child = {
 
 /**
  * A contributor artist for a song or an album.
- * https://opensubsonic.netlify.app/docs/responses/contributor/
+ * @see https://opensubsonic.netlify.app/docs/responses/contributor/
  */
 export type Contributor = {
 	/** The role of the contributor. */
@@ -612,7 +614,7 @@ export type Contributor = {
 
 /**
  * The replay gain data of a song.
- * https://opensubsonic.netlify.app/docs/responses/replaygain/
+ * @see https://opensubsonic.netlify.app/docs/responses/replaygain/
  */
 export type ReplayGain = {
 	/** The track replay gain value. (In Db) */
@@ -642,7 +644,7 @@ export type ReplayGain = {
 
 /**
  * Directory
- * https://opensubsonic.netlify.app/docs/responses/directory/
+ * @see https://opensubsonic.netlify.app/docs/responses/directory/
  */
 export type Directory = {
 	/** The id */
@@ -672,7 +674,7 @@ export type Directory = {
 
 /**
  * A genre.
- * https://opensubsonic.netlify.app/docs/responses/genre/
+ * @see https://opensubsonic.netlify.app/docs/responses/genre/
  */
 export type Genre = {
 	/** Genre name */
@@ -687,7 +689,7 @@ export type Genre = {
 
 /**
  * Genres list.
- * https://opensubsonic.netlify.app/docs/responses/genres/
+ * @see https://opensubsonic.netlify.app/docs/responses/genres/
  */
 export type Genres = {
 	/** List of genre */
@@ -696,7 +698,7 @@ export type Genres = {
 
 /**
  * An indexed artist list.
- * https://opensubsonic.netlify.app/docs/responses/index_/
+ * @see https://opensubsonic.netlify.app/docs/responses/index_/
  */
 export type Index = {
 	/** Index name */
@@ -708,7 +710,7 @@ export type Index = {
 
 /**
  * An indexed artist list by ID3 tags.
- * https://opensubsonic.netlify.app/docs/responses/indexid3/
+ * @see https://opensubsonic.netlify.app/docs/responses/indexid3/
  */
 export type IndexID3 = {
 	/** Index name */
@@ -720,7 +722,7 @@ export type IndexID3 = {
 
 /**
  * Indexes.
- * https://opensubsonic.netlify.app/docs/responses/indexes/
+ * @see https://opensubsonic.netlify.app/docs/responses/indexes/
  */
 export type Indexes = {
 	/** Ignored articles */
@@ -741,7 +743,7 @@ export type Indexes = {
 
 /**
  * An internetRadioStation.
- * https://opensubsonic.netlify.app/docs/responses/internetradiostation/
+ * @see https://opensubsonic.netlify.app/docs/responses/internetradiostation/
  */
 export type InternetRadioStation = {
 	/** The id */
@@ -759,7 +761,7 @@ export type InternetRadioStation = {
 
 /**
  * List of internet radio stations.
- * https://opensubsonic.netlify.app/docs/responses/internetradiostations/
+ * @see https://opensubsonic.netlify.app/docs/responses/internetradiostations/
  */
 export type InternetRadioStations = {
 	internetRadioStation?: InternetRadioStation[];
@@ -767,7 +769,7 @@ export type InternetRadioStations = {
 
 /**
  * Jukebox status.
- * https://opensubsonic.netlify.app/docs/responses/jukeboxstatus/
+ * @see https://opensubsonic.netlify.app/docs/responses/jukeboxstatus/
  */
 export type JukeboxStatus = {
 	/** The current index of the song being played */
@@ -785,7 +787,7 @@ export type JukeboxStatus = {
 
 /**
  * Jukebox playlist.
- * https://opensubsonic.netlify.app/docs/responses/jukeboxplaylist/
+ * @see https://opensubsonic.netlify.app/docs/responses/jukeboxplaylist/
  */
 export type JukeboxPlaylist = JukeboxStatus & {
 	/** The songs currently enqueued in the jukebox */
@@ -794,7 +796,7 @@ export type JukeboxPlaylist = JukeboxStatus & {
 
 /**
  * Lyrics.
- * https://opensubsonic.netlify.app/docs/responses/lyrics/
+ * @see https://opensubsonic.netlify.app/docs/responses/lyrics/
  */
 export type Lyrics = {
 	/** The lyrics */
@@ -809,7 +811,7 @@ export type Lyrics = {
 
 /**
  * Structured lyrics.
- * https://opensubsonic.netlify.app/docs/responses/structuredlyrics/
+ * @see https://opensubsonic.netlify.app/docs/responses/structuredlyrics/
  */
 export type StructuredLyrics = {
 	/**
@@ -841,7 +843,7 @@ export type StructuredLyrics = {
 
 /**
  * One line of a song lyric.
- * https://opensubsonic.netlify.app/docs/responses/line/
+ * @see https://opensubsonic.netlify.app/docs/responses/line/
  */
 export type Line = {
 	/** The actual text of this line */
@@ -856,7 +858,7 @@ export type Line = {
 
 /**
  * A music folder.
- * https://opensubsonic.netlify.app/docs/responses/musicfolder/
+ * @see https://opensubsonic.netlify.app/docs/responses/musicfolder/
  */
 export type MusicFolder = {
 	/** The id */
@@ -868,7 +870,7 @@ export type MusicFolder = {
 
 /**
  * A playlist.
- * https://opensubsonic.netlify.app/docs/responses/playlist/
+ * @see https://opensubsonic.netlify.app/docs/responses/playlist/
  */
 export type Playlist = {
 	/** Id of the playlist */
@@ -907,7 +909,7 @@ export type Playlist = {
 
 /**
  * Playlist with songs.
- * https://opensubsonic.netlify.app/docs/responses/playlistwithsongs/
+ * @see https://opensubsonic.netlify.app/docs/responses/playlistwithsongs/
  */
 export type PlaylistWithSongs = Playlist & {
 	entry?: Child[];
@@ -915,7 +917,7 @@ export type PlaylistWithSongs = Playlist & {
 
 /**
  * List of playlists.
- * https://opensubsonic.netlify.app/docs/responses/playlists/
+ * @see https://opensubsonic.netlify.app/docs/responses/playlists/
  */
 export type Playlists = {
 	/** A list of playlist */
@@ -924,7 +926,7 @@ export type Playlists = {
 
 /**
  * A podcast channel.
- * https://opensubsonic.netlify.app/docs/responses/podcastchannel/
+ * @see https://opensubsonic.netlify.app/docs/responses/podcastchannel/
  */
 export type PodcastChannel = {
 	/** The channel ID */
@@ -957,7 +959,7 @@ export type PodcastChannel = {
 
 /**
  * A podcast episode.
- * https://opensubsonic.netlify.app/docs/responses/podcastepisode/
+ * @see https://opensubsonic.netlify.app/docs/responses/podcastepisode/
  */
 export type PodcastEpisode = Child & {
 	/** ID used for streaming podcast */
@@ -978,7 +980,7 @@ export type PodcastEpisode = Child & {
 
 /**
  * List of newest podcasts.
- * https://opensubsonic.netlify.app/docs/responses/newestpodcasts/
+ * @see https://opensubsonic.netlify.app/docs/responses/newestpodcasts/
  */
 export type NewestPodcasts = {
 	episode?: PodcastEpisode[];
@@ -986,7 +988,7 @@ export type NewestPodcasts = {
 
 /**
  * List of podcasts.
- * https://opensubsonic.netlify.app/docs/responses/podcasts/
+ * @see https://opensubsonic.netlify.app/docs/responses/podcasts/
  */
 export type Podcasts = {
 	/** Podcast channel(s) */
@@ -995,7 +997,7 @@ export type Podcasts = {
 
 /**
  * A share.
- * https://opensubsonic.netlify.app/docs/responses/share/
+ * @see https://opensubsonic.netlify.app/docs/responses/share/
  */
 export type Share = {
 	/** The share Id */
@@ -1028,7 +1030,7 @@ export type Share = {
 
 /**
  * List of shares.
- * https://opensubsonic.netlify.app/docs/responses/shares/
+ * @see https://opensubsonic.netlify.app/docs/responses/shares/
  */
 export type Shares = {
 	share?: Share[];
@@ -1036,7 +1038,7 @@ export type Shares = {
 
 /**
  * A user.
- * https://opensubsonic.netlify.app/docs/responses/user/
+ * @see https://opensubsonic.netlify.app/docs/responses/user/
  */
 export type User = {
 	/** Username */
@@ -1096,7 +1098,7 @@ export type User = {
 
 /**
  * List of users.
- * https://opensubsonic.netlify.app/docs/responses/users/
+ * @see https://opensubsonic.netlify.app/docs/responses/users/
  */
 export type Users = {
 	user?: User[];
@@ -1104,7 +1106,7 @@ export type Users = {
 
 /**
  * Scan status information.
- * https://opensubsonic.netlify.app/docs/responses/scanstatus/
+ * @see https://opensubsonic.netlify.app/docs/responses/scanstatus/
  */
 export type ScanStatus = {
 	/** The status of the scan */
@@ -1116,7 +1118,7 @@ export type ScanStatus = {
 
 /**
  * Search result 2
- * https://opensubsonic.netlify.app/docs/responses/searchresult2/
+ * @see https://opensubsonic.netlify.app/docs/responses/searchresult2/
  */
 export type SearchResult2 = {
 	artist?: Artist[];
@@ -1126,7 +1128,7 @@ export type SearchResult2 = {
 
 /**
  * Search result 3
- * https://opensubsonic.netlify.app/docs/responses/searchresult3/
+ * @see https://opensubsonic.netlify.app/docs/responses/searchresult3/
  */
 export type SearchResult3 = {
 	artist?: ArtistID3[];
@@ -1136,7 +1138,7 @@ export type SearchResult3 = {
 
 /**
  * Information about an API key.
- * https://opensubsonic.netlify.app/docs/responses/tokeninfo/
+ * @see https://opensubsonic.netlify.app/docs/responses/tokeninfo/
  */
 export type TokenInfo = {
 	tokenInfo: {
@@ -1147,7 +1149,7 @@ export type TokenInfo = {
 
 /**
  * A supported OpenSubsonic API extension.
- * https://opensubsonic.netlify.app/docs/responses/opensubsonicextension/
+ * @see https://opensubsonic.netlify.app/docs/responses/opensubsonicextension/
  */
 export type OpenSubsonicExtension = {
 	/** The name of the extension. */
@@ -1159,7 +1161,7 @@ export type OpenSubsonicExtension = {
 
 /**
  * Information about a license.
- * https://opensubsonic.netlify.app/docs/responses/license/
+ * @see https://opensubsonic.netlify.app/docs/responses/license/
  */
 export type License = {
 	/** The status of the license */
@@ -1181,7 +1183,7 @@ export type License = {
  * Errata: In the original spec, current is required to be an int.
  * However, as child ids are strings, this is updated to note that the id should be a string to be consistent.
  *
- * https://opensubsonic.netlify.app/docs/responses/playqueue/
+ * @see https://opensubsonic.netlify.app/docs/responses/playqueue/
  */
 export type PlayQueue = {
 	/** ID of currently playing track */
@@ -1205,7 +1207,7 @@ export type PlayQueue = {
 
 /**
  * NowPlayingEntry
- * https://opensubsonic.netlify.app/docs/responses/nowplayingentry/
+ * @see https://opensubsonic.netlify.app/docs/responses/nowplayingentry/
  */
 export type NowPlayingEntry = Child & {
 	/** The username */
@@ -1216,7 +1218,7 @@ export type NowPlayingEntry = Child & {
 
 	/**
 	 * Fake, if navidrome (just i + 1)
-	 * https://github.com/navidrome/navidrome/blob/4359adc042e36096767f4336a7a237d103ad28ab/server/subsonic/album_lists.go#L182
+	 * @see https://github.com/navidrome/navidrome/blob/4359adc042e36096767f4336a7a237d103ad28ab/server/subsonic/album_lists.go#L182
 	 */
 	playerId: number;
 
@@ -1226,7 +1228,7 @@ export type NowPlayingEntry = Child & {
 
 /**
  * NowPlaying
- * https://opensubsonic.netlify.app/docs/responses/nowplaying/
+ * @see https://opensubsonic.netlify.app/docs/responses/nowplaying/
  */
 export type NowPlaying = {
 	/** A list of NowPlayingEntry */
@@ -1235,7 +1237,7 @@ export type NowPlaying = {
 
 /**
  * List of starred entities
- * https://opensubsonic.netlify.app/docs/responses/starred/
+ * @see https://opensubsonic.netlify.app/docs/responses/starred/
  */
 export type Starred = {
 	/** Starred artists */
@@ -1250,7 +1252,7 @@ export type Starred = {
 
 /**
  * [ID3] List of starred entities with ID3 tags
- * https://opensubsonic.netlify.app/docs/responses/starred2/
+ * @see https://opensubsonic.netlify.app/docs/responses/starred2/
  */
 export type StarredID3 = {
 	/** Starred artists */

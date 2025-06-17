@@ -140,7 +140,7 @@ export type GetAlbumInfoResponseT = SubsonicResponseT<{
 export type GetAlbumInfo2ResponseT = SubsonicResponseT<{
 	/**
 	 * Uses the same method as getAlbumInfo (GetAlbumInfo), so this is the same response basically
-	 * https://github.com/navidrome/navidrome/blob/4359adc042e36096767f4336a7a237d103ad28ab/server/subsonic/api.go#L100
+	 * @see https://github.com/navidrome/navidrome/blob/4359adc042e36096767f4336a7a237d103ad28ab/server/subsonic/api.go#L100
 	 */
 	albumInfo: AlbumInfo;
 }>;
@@ -160,7 +160,7 @@ export type GetSimilarSongsResponseT = SubsonicResponseT<{
 export type GetSimilarSongs2ResponseT = SubsonicResponseT<{
 	/**
 	 * Fires the same method inside of API method (api.GetSimilarSongs(r))
-	 * https://github.com/navidrome/navidrome/blob/4359adc042e36096767f4336a7a237d103ad28ab/server/subsonic/browsing.go#L359
+	 * @see https://github.com/navidrome/navidrome/blob/4359adc042e36096767f4336a7a237d103ad28ab/server/subsonic/browsing.go#L359
 	 */
 	similarSongs2: SimilarSongsID3;
 }>;
