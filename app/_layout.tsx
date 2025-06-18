@@ -19,7 +19,7 @@ const RootLayout = () => {
 	});
 
 	const [loaded] = useFonts({
-		Nunito: require('@/assets/fonts/Nunito/Nunito-VariableFont_wght.ttf')
+		Nunito: require('@assets/fonts/Nunito/Nunito-VariableFont_wght.ttf')
 	});
 
 	useEffect(() => {
