@@ -7,7 +7,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
-import { TopBar } from '@elements';
+import { TopBar, DrawerContent } from '@elements';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 SplashScreen.preventAutoHideAsync();
@@ -45,6 +45,7 @@ const RootLayout = () => {
 						swipeEdgeWidth: 50,
 						swipeMinDistance: 50
 					}}
+					drawerContent={(props) => <DrawerContent {...props} />}
 				>
 					<Drawer.Screen
 						name="(tabs)"

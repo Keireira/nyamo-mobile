@@ -5,11 +5,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 export const Icon = styled(Ionicons).attrs({
 	color: 'white',
 	size: 24
-})<{ $glitchColor: string }>`
-	text-shadow-color: ${({ $glitchColor }) => $glitchColor};
-	text-shadow-offset: 1px 2px;
-	text-shadow-radius: 5px;
-`;
+})``;
 
 export const TabButton = styled.Pressable`
 	flex: 1;

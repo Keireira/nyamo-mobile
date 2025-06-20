@@ -15,19 +15,19 @@ const TabLayout = () => {
 				<BottomNavRoot $bottom={insets.bottom} intensity={30} tint="dark">
 					<TabTrigger name="home" href="/" asChild>
 						<TabButton style={{ justifyContent: 'center' }}>
-							<Icon name="musical-notes-outline" $glitchColor="#FF00FF" />
+							<Icon name="musical-notes-outline" />
 						</TabButton>
 					</TabTrigger>
 
 					<TabTrigger name="library" href="/library" asChild>
 						<TabButton style={{ justifyContent: 'center' }}>
-							<Icon name="albums-outline" $glitchColor="#FFFF00" />
+							<Icon name="albums-outline" />
 						</TabButton>
 					</TabTrigger>
 
 					<TabTrigger name="search" href="/search" asChild>
 						<TabButton style={{ justifyContent: 'center' }}>
-							<Icon name="search-outline" $glitchColor="#00FFFF" />
+							<Icon name="search-outline" />
 						</TabButton>
 					</TabTrigger>
 				</BottomNavRoot>

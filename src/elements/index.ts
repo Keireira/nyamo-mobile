@@ -1,2 +1,2 @@
 export { default as TopBar } from './top-bar';
-export { default as BottomNavigation } from './bottom-nav';
+export { default as DrawerContent } from './drawer-content';
