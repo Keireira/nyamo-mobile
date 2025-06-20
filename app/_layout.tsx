@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
+import appModel from '@models';
 import { useGate } from 'effector-react';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
 import { withFactory, useFactoryModel } from '@lib/effector';
-import appModel from '@models';
+import * as SplashScreen from 'expo-splash-screen';
 import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Drawer } from 'expo-router/drawer';
+import { TopBar } from '@elements';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,11 +37,40 @@ const RootLayout = () => {
 
 	return (
 		<SafeAreaProvider initialMetrics={initialWindowMetrics}>
-			<Stack screenOptions={{ headerShown: false }}>
-				<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-				<Stack.Screen name="+not-found" />
-				<Stack.Screen name="(auth)" options={{ headerShown: false }} />
-			</Stack>
+			<GestureHandlerRootView style={{ flex: 1 }}>
+				<Drawer
+					screenOptions={{
+						header: (props) => <TopBar {...props} />,
+						drawerType: 'slide',
+						swipeEdgeWidth: 50,
+						swipeMinDistance: 50
+					}}
+				>
+					<Drawer.Screen
+						name="(tabs)"
+						options={{
+							drawerLabel: 'Home',
+							drawerIcon: ({ color, size }) => <Ionicons name="home-outline" size={size} color={color} />
+						}}
+					/>
+
+					<Drawer.Screen
+						name="downloads"
+						options={{
+							drawerLabel: 'Downloads',
+							drawerIcon: ({ color, size }) => <Ionicons name="download-outline" size={size} color={color} />
+						}}
+					/>
+
+					<Drawer.Screen
+						name="settings"
+						options={{
+							drawerLabel: 'Settings',
+							drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color} />
+						}}
+					/>
+				</Drawer>
+			</GestureHandlerRootView>
 		</SafeAreaProvider>
 	);
 };
