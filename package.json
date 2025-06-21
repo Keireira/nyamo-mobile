@@ -1,5 +1,5 @@
 {
-  "name": "music",
+  "name": "nyamo",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
+    "@gorhom/bottom-sheet": "^5.1.6",
     "@react-native-masked-view/masked-view": "0.3.2",
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/drawer": "^7.4.3",
@@ -46,7 +47,6 @@
     "react-native-reanimated": "~3.17.5",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
-    "react-native-svg": "15.11.2",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
     "styled-components": "^6.1.19"

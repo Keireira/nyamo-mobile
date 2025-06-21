@@ -14,10 +14,10 @@ const Title = styled(Text)`
 	font-weight: bold;
 `;
 
-const SettingsScreen = () => (
+const SyncScreen = () => (
 	<Root>
-		<Title>Settings</Title>
+		<Title>Sync</Title>
 	</Root>
 );
 
-export default SettingsScreen;
+export default SyncScreen;

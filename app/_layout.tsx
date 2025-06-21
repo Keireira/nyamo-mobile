@@ -8,7 +8,6 @@ import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-c
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import { TopBar, DrawerContent } from '@elements';
-import Ionicons from '@expo/vector-icons/Ionicons';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -41,35 +40,15 @@ const RootLayout = () => {
 				<Drawer
 					screenOptions={{
 						header: (props) => <TopBar {...props} />,
-						drawerType: 'slide',
 						swipeEdgeWidth: 50,
-						swipeMinDistance: 50
+						swipeMinDistance: 50,
+						drawerType: 'front',
+						drawerPosition: 'right',
+						drawerHideStatusBarOnOpen: false
 					}}
 					drawerContent={(props) => <DrawerContent {...props} />}
 				>
-					<Drawer.Screen
-						name="(tabs)"
-						options={{
-							drawerLabel: 'Home',
-							drawerIcon: ({ color, size }) => <Ionicons name="home-outline" size={size} color={color} />
-						}}
-					/>
-
-					<Drawer.Screen
-						name="downloads"
-						options={{
-							drawerLabel: 'Downloads',
-							drawerIcon: ({ color, size }) => <Ionicons name="download-outline" size={size} color={color} />
-						}}
-					/>
-
-					<Drawer.Screen
-						name="settings"
-						options={{
-							drawerLabel: 'Settings',
-							drawerIcon: ({ color, size }) => <Ionicons name="settings-outline" size={size} color={color} />
-						}}
-					/>
+					<Drawer.Screen name="(drawer)" />
 				</Drawer>
 			</GestureHandlerRootView>
 		</SafeAreaProvider>

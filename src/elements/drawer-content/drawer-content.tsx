@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { View, ScrollView, useWindowDimensions } from 'react-native';
+import { View, ScrollView, useWindowDimensions, Pressable, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
 import * as Haptics from 'expo-haptics';
+import { usePathname, useRouter } from 'expo-router';
+import { useGravatarUrl } from '@hooks';
 
 import { Text, Switch } from '@ui';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -49,13 +51,19 @@ const ThickLabel = styled(Text)`
 `;
 
 const DrawerContent = (props: DrawerContentComponentProps) => {
+	const router = useRouter();
+	const pathname = usePathname();
+	const gravatarUrl = useGravatarUrl('github@alena.red');
+
 	const insets = useSafeAreaInsets();
 	const { height } = useWindowDimensions();
-	const [value, setValue] = useState(false);
 	const [value1, setValue1] = useState(false);
 
 	const closeDrawer = () => {
-		props.navigation.navigate('(tabs)');
+		if (router.canDismiss()) {
+			router.dismissAll();
+		}
+
 		props.navigation.closeDrawer();
 		Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 	};
@@ -93,79 +101,66 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 								paddingRight: 16
 							}}
 						>
-							<View
-								style={{
-									height: 96,
-									backgroundColor: 'lightblue',
-									width: 96,
-									borderRadius: 42,
-									display: 'flex',
-									alignItems: 'center',
-									justifyContent: 'center'
-								}}
-							>
-								<Text style={{ fontSize: 24, fontWeight: 'bold', color: 'white' }}>A</Text>
-							</View>
+							<Pressable
+								onPress={() => {
+									router.navigate({
+										pathname: '/users/[userId]',
+										params: { userId: 'bacon' }
+									});
 
-							<View
-								style={{
-									height: 96,
-									backgroundColor: 'lightpink',
-									width: 96,
-									borderRadius: 42,
-									display: 'flex',
-									alignItems: 'center',
-									justifyContent: 'center'
+									Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 								}}
 							>
-								<Text style={{ fontSize: 24, fontWeight: 'bold', color: 'white' }}>19</Text>
-							</View>
+								<View
+									style={{
+										position: 'relative',
+										height: 96,
+										backgroundColor: 'lightblue',
+										width: 96,
+										borderRadius: 42,
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'center'
+									}}
+								>
+									<Image
+										source={{ uri: gravatarUrl }}
+										borderRadius={24}
+										style={{ position: 'absolute', top: 0, left: 0, width: 96, height: 96, zIndex: 2 }}
+									/>
+									<Text style={{ fontSize: 24, fontWeight: 'bold', color: 'white' }}>A</Text>
+								</View>
+							</Pressable>
 
-							<View
-								style={{
-									height: 96,
-									backgroundColor: 'lightgreen',
-									width: 96,
-									borderRadius: 42,
-									display: 'flex',
-									alignItems: 'center',
-									justifyContent: 'center'
-								}}
-							>
-								<Text style={{ fontSize: 24, fontWeight: 'bold', color: 'white' }}>4</Text>
-							</View>
+							<Pressable
+								onPress={() => {
+									router.navigate({
+										pathname: '/(drawer)/auth'
+									});
 
-							<View
-								style={{
-									height: 96,
-									backgroundColor: 'lightgray',
-									width: 96,
-									borderRadius: 42,
-									display: 'flex',
-									alignItems: 'center',
-									justifyContent: 'center',
-									opacity: 0.5
+									Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 								}}
 							>
-								<Text style={{ fontSize: 48, fontWeight: 400, color: 'white' }}>+</Text>
-							</View>
+								<View
+									style={{
+										height: 96,
+										backgroundColor: 'lightgray',
+										width: 96,
+										borderRadius: 42,
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'center',
+										opacity: 0.5
+									}}
+								>
+									<Text style={{ fontSize: 48, fontWeight: 400, color: 'white' }}>+</Text>
+								</View>
+							</Pressable>
 						</View>
 					</ScrollView>
 				</FadeEdgesView>
 
 				<View style={{ marginTop: 48, gap: 24 }}>
-					<NavItem
-						hitSlop={16}
-						onPress={() => {
-							setValue(!value);
-							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-						}}
-					>
-						<Label>Folders mode</Label>
-
-						<Switch checked={value} onCheckedChange={setValue} />
-					</NavItem>
-
 					<NavItem
 						hitSlop={16}
 						onPress={() => {
@@ -181,7 +176,10 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 					<NavItem
 						hitSlop={16}
 						onPress={() => {
-							props.navigation.navigate('downloads');
+							router.navigate({
+								pathname: '/(drawer)/downloads'
+							});
+
 							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 						}}
 					>
@@ -191,14 +189,31 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 					<NavItem
 						hitSlop={16}
 						onPress={() => {
-							props.navigation.navigate('settings');
+							router.navigate({
+								pathname: '/(drawer)/settings'
+							});
+
 							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 						}}
 					>
 						<Label>Settings</Label>
 					</NavItem>
+
+					<NavItem
+						hitSlop={16}
+						onPress={() => {
+							router.navigate({
+								pathname: '/(drawer)/sync'
+							});
+
+							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+						}}
+					>
+						<Label>Sync</Label>
+					</NavItem>
 				</View>
 
+				{/* if not home */}
 				<View
 					style={{
 						position: 'absolute',
@@ -207,10 +222,12 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 						gap: 16
 					}}
 				>
-					<NavItem onPress={closeDrawer} hitSlop={16} style={{ justifyContent: 'flex-start' }}>
-						<Ionicons name="arrow-back" size={24} color="black" />
-						<ThickLabel>Back</ThickLabel>
-					</NavItem>
+					{!['/', '/library', '/search'].includes(pathname) && (
+						<NavItem onPress={closeDrawer} hitSlop={16} style={{ justifyContent: 'flex-start' }}>
+							<Ionicons name="arrow-back" size={24} color="black" />
+							<ThickLabel>Home</ThickLabel>
+						</NavItem>
+					)}
 
 					<View style={{ display: 'flex', flexDirection: 'row', gap: 8 }}>
 						<Text>v. 1.2.123</Text>

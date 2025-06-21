@@ -6,15 +6,9 @@ import { BlurView } from 'expo-blur';
 export const Title = styled(Text)`
 	color: white;
 	font-weight: 700;
-	font-size: 18px;
+	font-size: 24px;
 	flex: 1;
-	text-align: center;
-	margin-left: -24px;
-	text-transform: uppercase;
-	text-shadow-color: cyan;
-	text-shadow-offset: 1px 2px;
-	text-shadow-radius: 2px;
-	letter-spacing: 2px;
+	text-align: left;
 `;
 
 export default styled(BlurView).attrs({

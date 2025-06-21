@@ -30,6 +30,18 @@ const useGetTitle = () => {
 			// return 'Search ∴ kensaku';
 			// return 'Search ∴ けんさく';
 
+			case '/auth':
+				return 'Login';
+
+			case '/settings':
+				return 'Settings';
+
+			case '/sync':
+				return 'Sync';
+
+			case '/downloads':
+				return 'Downloads';
+
 			default:
 				return 'Nyamo ∴ にゃも';
 		}
@@ -48,6 +60,8 @@ const TopBar = (props: DrawerHeaderProps) => {
 
 	return (
 		<Root $top={insets.top}>
+			<Title>{title}</Title>
+
 			<Pressable
 				onPress={openDrawer}
 				hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
@@ -62,8 +76,6 @@ const TopBar = (props: DrawerHeaderProps) => {
 			>
 				<Ionicons name="disc-outline" size={24} color="white" />
 			</Pressable>
-
-			<Title>{title}</Title>
 		</Root>
 	);
 };
