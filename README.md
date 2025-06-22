@@ -9,4 +9,6 @@ npx pod-install
 
 ### Wishbucket:
 - [ ] OPUS support
+- [ ] Emby support
+- [ ] Jellyfin support
 - [ ] Add local setting 'Ignore locally' (do not insert song\album\artist in playlist until specified)
