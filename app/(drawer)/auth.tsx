@@ -8,7 +8,7 @@ const LoginUser = () => {
 
 	const handleDismiss = () => {
 		if (router.canDismiss()) {
-			router.dismissAll();
+			router.dismiss();
 		}
 	};
 

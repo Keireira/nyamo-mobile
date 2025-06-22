@@ -6,7 +6,7 @@ import * as Haptics from 'expo-haptics';
 import { usePathname, useRouter } from 'expo-router';
 import { useGravatarUrl } from '@hooks';
 
-import { Text, Switch } from '@ui';
+import { Text, Switch, Avatar } from '@ui';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import type { DrawerContentComponentProps } from '@react-navigation/drawer';
@@ -101,7 +101,10 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 								paddingRight: 16
 							}}
 						>
-							<Pressable
+							<Avatar
+								uri={gravatarUrl}
+								alt="User's avatar"
+								fallback="A"
 								onPress={() => {
 									router.navigate({
 										pathname: '/users/[userId]',
@@ -110,29 +113,12 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 
 									Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 								}}
-							>
-								<View
-									style={{
-										position: 'relative',
-										height: 96,
-										backgroundColor: 'lightblue',
-										width: 96,
-										borderRadius: 42,
-										display: 'flex',
-										alignItems: 'center',
-										justifyContent: 'center'
-									}}
-								>
-									<Image
-										source={{ uri: gravatarUrl }}
-										borderRadius={24}
-										style={{ position: 'absolute', top: 0, left: 0, width: 96, height: 96, zIndex: 2 }}
-									/>
-									<Text style={{ fontSize: 24, fontWeight: 'bold', color: 'white' }}>A</Text>
-								</View>
-							</Pressable>
+							/>
 
-							<Pressable
+							<Avatar
+								alt="Add new user"
+								color="lightgray"
+								fallback="+"
 								onPress={() => {
 									router.navigate({
 										pathname: '/(drawer)/auth'
@@ -140,22 +126,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 
 									Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 								}}
-							>
-								<View
-									style={{
-										height: 96,
-										backgroundColor: 'lightgray',
-										width: 96,
-										borderRadius: 42,
-										display: 'flex',
-										alignItems: 'center',
-										justifyContent: 'center',
-										opacity: 0.5
-									}}
-								>
-									<Text style={{ fontSize: 48, fontWeight: 400, color: 'white' }}>+</Text>
-								</View>
-							</Pressable>
+							/>
 						</View>
 					</ScrollView>
 				</FadeEdgesView>

@@ -7,5 +7,6 @@ pnpm install
 npx pod-install
 ```
 
-@TODO:
+### Wishbucket:
 - [ ] OPUS support
+- [ ] Add local setting 'Ignore locally' (do not insert song\album\artist in playlist until specified)

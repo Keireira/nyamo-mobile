@@ -18,6 +18,7 @@
     "@react-navigation/drawer": "^7.4.4",
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
+    "@rn-primitives/avatar": "^1.2.0",
     "@rn-primitives/switch": "^1.2.0",
     "effector": "^23.3.0",
     "effector-react": "^23.3.0",

@@ -15,35 +15,22 @@ const useGetTitle = () => {
 	const title = useMemo(() => {
 		switch (pathname) {
 			case '/':
-			case '/(tabs)':
 				return 'Home';
-			// return 'Home ∴ hoomu';
-			// return 'Home ∴ ホーム';
 			case '/library':
-			case '/(tabs)/library':
 				return 'Library';
-			// return 'Library ∴ raiburarii';
-			// return 'Library ∴ ライブラリ';
 			case '/search':
-			case '/(tabs)/search':
 				return 'Search';
-			// return 'Search ∴ kensaku';
-			// return 'Search ∴ けんさく';
-
 			case '/auth':
 				return 'Login';
-
 			case '/settings':
 				return 'Settings';
-
 			case '/sync':
 				return 'Sync';
-
 			case '/downloads':
 				return 'Downloads';
 
 			default:
-				return 'Nyamo ∴ にゃも';
+				return 'Nyamo';
 		}
 	}, [pathname]);
 
@@ -64,7 +51,7 @@ const TopBar = (props: DrawerHeaderProps) => {
 
 			<Pressable
 				onPress={openDrawer}
-				hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
+				hitSlop={20}
 				style={({ pressed }) => [
 					{
 						zIndex: 1000,

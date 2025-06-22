@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import * as Crypto from 'expo-crypto';
 
-const useGravatarUrl = (email: string) => {
+const useGravatarUrl = (email: string = '') => {
 	const [hash, setHash] = useState<string>('');
 
 	useEffect(() => {
@@ -14,7 +14,7 @@ const useGravatarUrl = (email: string) => {
 		return `https://www.gravatar.com/avatar/${hash}?d=404`;
 	}, [hash]);
 
-	return gravatarUrl || '';
+	return hash ? gravatarUrl : undefined;
 };
 
 export default useGravatarUrl;
