@@ -20,7 +20,7 @@ export const ListItemRight = styled.View`
 `;
 
 export const ListItemTitle = styled(Text)`
-	font-size: 17px;
+	font-size: 18px;
 	color: #000;
 	font-weight: 400;
 `;
@@ -32,7 +32,7 @@ export const ListItemSubtitle = styled(Text)`
 `;
 
 export const ListItemDetail = styled(Text)`
-	font-size: 17px;
+	font-size: 18px;
 	color: #8e8e93;
 	margin-right: 8px;
 `;
@@ -43,11 +43,9 @@ export const ChevronIcon = styled(Text)`
 	margin-left: 8px;
 `;
 
-export const SwitchContainer = styled.View`
-	margin-left: 8px;
-`;
+export const SwitchContainer = styled.View``;
 
-export default styled.TouchableOpacity`
+export default styled.TouchableHighlight`
 	flex-direction: row;
 	align-items: center;
 	padding-vertical: 12px;

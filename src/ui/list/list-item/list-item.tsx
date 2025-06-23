@@ -1,49 +1,34 @@
 import React from 'react';
 
-import Root, {
-	ListItemContent,
-	ListItemLeft,
-	ListItemRight,
-	ListItemTitle,
-	ListItemSubtitle,
-	ListItemDetail,
-	ChevronIcon,
-	SwitchContainer
-} from './list-item.styles';
-import { View } from 'react-native';
 import Switch from '../../switch';
+import ContextMenu from '../../context-menu';
+import Root, { ListItemContent, ListItemLeft, ListItemRight, ListItemTitle, SwitchContainer } from './list-item.styles';
 
-import type { Props } from './list-item.d';
+import type { AccessoryContextMenuT, AccessorySwitchT, Props } from './list-item.d';
 
-const ListItemComponent = ({
-	title,
-	subtitle,
-	detail,
-	onPress,
-	showChevron = true,
-	disabled = false,
-	accessory = 'none',
-	switchValue = false,
-	onSwitchChange
-}: Props) => {
+const SwitchAccessory = ({ value, onPress }: AccessorySwitchT) => {
 	return (
-		<Root onPress={onPress} disabled={disabled}>
+		<SwitchContainer>
+			<Switch checked={value} onCheckedChange={onPress} />
+		</SwitchContainer>
+	);
+};
+
+const ContextMenuAccessory = ({ actions, children }: AccessoryContextMenuT) => {
+	return <ContextMenu actions={actions}>{children}</ContextMenu>;
+};
+
+const ListItemComponent = ({ title, onPress, accessory }: Props) => {
+	return (
+		<Root onPress={onPress}>
 			<ListItemContent>
 				<ListItemLeft>
-					<View>
-						<ListItemTitle>{title}</ListItemTitle>
-						{subtitle && <ListItemSubtitle>{subtitle}</ListItemSubtitle>}
-					</View>
+					<ListItemTitle>{title}</ListItemTitle>
 				</ListItemLeft>
 
 				<ListItemRight>
-					{detail && <ListItemDetail>{detail}</ListItemDetail>}
-					{accessory === 'switch' && (
-						<SwitchContainer>
-							<Switch checked={switchValue} onCheckedChange={onSwitchChange} />
-						</SwitchContainer>
-					)}
-					{showChevron && accessory !== 'switch' && <ChevronIcon>›</ChevronIcon>}
+					{accessory?.type === 'switch' && <SwitchAccessory {...accessory} />}
+					{accessory?.type === 'context-menu' && <ContextMenuAccessory {...accessory} />}
 				</ListItemRight>
 			</ListItemContent>
 		</Root>

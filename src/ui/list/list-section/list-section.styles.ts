@@ -35,7 +35,7 @@ const first = css`
 	border-top-right-radius: 10px;
 `;
 
-export const GroupedListItem = styled.TouchableOpacity<{ $isFirst: boolean; $isLast: boolean }>`
+export const GroupedListItem = styled.View<{ $isFirst: boolean; $isLast: boolean }>`
 	min-height: 44px;
 	background-color: white;
 	border-bottom-width: 0.5px;

@@ -5,6 +5,9 @@ import type { Props } from '@ui/list/list.d';
 
 const SettingsScreen = () => {
 	const [value, setValue] = useState(false);
+	const [value2, setValue2] = useState(true);
+	const [value3, setValue3] = useState(true);
+	const [value4, setValue4] = useState(true);
 
 	const sections: Props['sections'] = [
 		{
@@ -15,23 +18,29 @@ const SettingsScreen = () => {
 					id: '11',
 					disabled: true,
 					title: 'Folder View',
-					accessory: 'switch',
-					switchValue: value,
-					onSwitchChange: setValue
+					accessory: {
+						type: 'switch',
+						value: value,
+						onPress: setValue
+					}
 				},
 				{
 					id: '12',
 					title: 'Haptic Feedback',
-					accessory: 'switch',
-					switchValue: value,
-					onSwitchChange: setValue
+					accessory: {
+						type: 'switch',
+						value: value2,
+						onPress: setValue2
+					}
 				},
 				{
 					id: '13',
 					title: 'In-App Notifications',
-					accessory: 'switch',
-					switchValue: value,
-					onSwitchChange: setValue
+					accessory: {
+						type: 'switch',
+						value: value3,
+						onPress: setValue3
+					}
 				}
 			]
 		},
@@ -49,9 +58,11 @@ const SettingsScreen = () => {
 				{
 					id: '21',
 					title: 'Dark Mode',
-					accessory: 'switch',
-					switchValue: value,
-					onSwitchChange: setValue
+					accessory: {
+						type: 'switch',
+						value: value4,
+						onPress: setValue4
+					}
 				}
 			]
 		},

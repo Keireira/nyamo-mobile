@@ -1,12 +1,30 @@
+import type React from 'react';
+import type { ContextMenuProps } from 'react-native-context-menu-view';
+
+export type AccessorySwitchT = {
+	type: 'switch';
+	value: boolean;
+	onPress: (value: boolean) => void;
+};
+
+export type AccessoryContextMenuT = {
+	type: 'context-menu';
+	children: React.ReactNode;
+	actions: ContextMenuProps['actions'];
+	onPress: ContextMenuProps['onPress'];
+};
+
+export type AccessoryDrumrollT = {
+	type: 'drumroll';
+	value: string | number;
+	onValueChange: (value: string | number) => void;
+};
+
+export type AccessoryT = AccessorySwitchT | AccessoryContextMenuT | AccessoryDrumrollT;
+
 export type Props = {
 	id: string;
 	title: string;
-	subtitle?: string;
-	detail?: string;
 	onPress?: () => void;
-	showChevron?: boolean;
-	disabled?: boolean;
-	accessory?: 'switch' | 'none';
-	switchValue?: boolean;
-	onSwitchChange?: (value: boolean) => void;
+	accessory?: AccessoryT | undefined;
 };
