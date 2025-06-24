@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-import { Wrapper, List } from '@ui';
-import type { Props } from '@ui/list/list.d';
+import { Wrapper, List, Text } from '@ui';
+
+import type { Props as ListProps } from '@ui/list/list.d';
 
 const SettingsScreen = () => {
 	const [value, setValue] = useState(false);
@@ -9,14 +10,13 @@ const SettingsScreen = () => {
 	const [value3, setValue3] = useState(true);
 	const [value4, setValue4] = useState(true);
 
-	const sections: Props['sections'] = [
+	const sections: ListProps['sections'] = [
 		{
 			id: '1',
 			title: 'General',
 			innerArray: [
 				{
 					id: '11',
-					disabled: true,
 					title: 'Folder View',
 					accessory: {
 						type: 'switch',
@@ -51,9 +51,16 @@ const SettingsScreen = () => {
 				{
 					id: '23',
 					title: 'Language',
-					// accessory: 'context-menu',
-					// pick available language
-					detail: 'English'
+					accessory: {
+						type: 'context-menu',
+						children: <Text style={{ fontSize: 18, color: '#666' }}>English</Text>,
+						actions: [
+							{ title: 'English (US)' },
+							{ title: 'Castellano', subtitle: 'Spanish' },
+							{ title: 'Русский', subtitle: 'Russian' },
+							{ title: 'Қазақ', subtitle: 'Kazakh' }
+						]
+					}
 				},
 				{
 					id: '21',
@@ -92,26 +99,42 @@ const SettingsScreen = () => {
 			innerArray: [
 				{
 					id: '41',
-					title: 'Bitrate'
-					// accessory: 'context-menu',
-					// pick available quality
+					title: 'Max Bitrate',
+					accessory: {
+						type: 'context-menu',
+						children: <Text style={{ fontSize: 18, color: '#666' }}>RAW</Text>,
+						actions: [
+							{ title: 'RAW' },
+							{
+								title: 'Compressed',
+								actions: [
+									{ title: '32 kbps' },
+									{ title: '64 kbps' },
+									{ title: '96 kbps' },
+									{ title: '128 kbps' },
+									{ title: '160 kbps' },
+									{ title: '192 kbps' },
+									{ title: '256 kbps' },
+									{ title: '320 kbps' }
+								]
+							}
+						]
+					}
 				},
 				{
 					id: '42',
-					title: 'Transcoding'
-					// accessory: 'context-menu',
-					// pick available audio formats to stream
-					// raw | mp3 | none
+					title: 'Transcoding',
+					accessory: {
+						type: 'context-menu',
+						children: <Text style={{ fontSize: 18, color: '#666' }}>RAW</Text>,
+						actions: [{ title: 'RAW' }, { title: 'mp3' }]
+					}
 				}
 			]
 		}
 	];
 
-	return (
-		<Wrapper withBottom={false}>
-			<List sections={sections} />
-		</Wrapper>
-	);
+	return <Wrapper<ListProps> as={List} withBottom={false} sections={sections} />;
 };
 
 export default SettingsScreen;

@@ -6,14 +6,13 @@ export const ListSection = styled.View`
 `;
 
 export const SectionHeader = styled(Text)`
-	font-size: 13px;
+	font-size: 12px;
 	font-weight: 600;
 	color: #6d6d70;
 	text-transform: uppercase;
 	letter-spacing: 0.5px;
-	margin-left: 16px;
-	margin-bottom: 6px;
-	margin-top: 8px;
+	margin-left: 32px;
+	margin-top: 16px;
 `;
 
 export const GroupedListContainer = styled.View`

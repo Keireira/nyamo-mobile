@@ -10,9 +10,7 @@ export type AccessorySwitchT = {
 export type AccessoryContextMenuT = {
 	type: 'context-menu';
 	children: React.ReactNode;
-	actions: ContextMenuProps['actions'];
-	onPress: ContextMenuProps['onPress'];
-};
+} & ContextMenuProps;
 
 export type AccessoryDrumrollT = {
 	type: 'drumroll';

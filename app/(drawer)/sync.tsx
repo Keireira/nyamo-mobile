@@ -1,19 +1,10 @@
 import React from 'react';
-import { Text, List } from '@ui';
-import styled from 'styled-components/native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import type { EdgeInsets } from 'react-native-safe-area-context';
-import type { ContextMenuOnPressNativeEvent } from 'react-native-context-menu-view';
+import { Text, List, Wrapper } from '@ui';
+
 import type { NativeSyntheticEvent } from 'react-native';
 import type { Props as ListProps } from '@ui/list/list.d';
-
-const Root = styled.View<{ $insets: EdgeInsets }>`
-	flex: 1;
-	background-color: #f2f2f7;
-	padding-top: ${({ $insets }) => $insets.top + 42}px;
-	padding-bottom: ${({ $insets }) => $insets.bottom}px;
-`;
+import type { ContextMenuOnPressNativeEvent } from 'react-native-context-menu-view';
 
 const sections: ListProps['sections'] = [
 	{
@@ -55,13 +46,7 @@ const sections: ListProps['sections'] = [
 ];
 
 const SyncScreen = () => {
-	const insets = useSafeAreaInsets();
-
-	return (
-		<Root $insets={insets}>
-			<List sections={sections} style={{ flex: 1, paddingTop: 20 }} />
-		</Root>
-	);
+	return <Wrapper<ListProps> as={List} withBottom={false} sections={sections} />;
 };
 
 export default SyncScreen;

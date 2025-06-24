@@ -14,8 +14,12 @@ const SwitchAccessory = ({ value, onPress }: AccessorySwitchT) => {
 	);
 };
 
-const ContextMenuAccessory = ({ actions, children }: AccessoryContextMenuT) => {
-	return <ContextMenu actions={actions}>{children}</ContextMenu>;
+const ContextMenuAccessory = ({ actions, children, ...restProps }: AccessoryContextMenuT) => {
+	return (
+		<ContextMenu actions={actions} {...restProps}>
+			{children}
+		</ContextMenu>
+	);
 };
 
 const ListItemComponent = ({ title, onPress, accessory }: Props) => {
