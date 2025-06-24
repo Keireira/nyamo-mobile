@@ -58,7 +58,7 @@ const SettingsScreen = () => {
 							{ title: 'English (US)' },
 							{ title: 'Castellano', subtitle: 'Spanish' },
 							{ title: 'Русский', subtitle: 'Russian' },
-							{ title: 'Қазақ', subtitle: 'Kazakh' }
+							{ title: 'Қазақша', subtitle: 'Kazakh' }
 						]
 					}
 				},

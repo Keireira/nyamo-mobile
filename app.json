@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "nyamo",
+    "name": "Nyamo",
     "slug": "nyamo",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.nyamo",
+      "bundleIdentifier": "com.keireira.nyamo",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -21,7 +21,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.anonymous.nyamo"
+      "package": "com.keireira.nyamo"
     },
     "web": {
       "bundler": "metro",
