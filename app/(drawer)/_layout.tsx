@@ -7,6 +7,8 @@ const DrawerLayout = () => {
 			<Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 			<Stack.Screen name="users" options={{ headerShown: false }} />
 			<Stack.Screen name="downloads" options={{ headerShown: false }} />
+			<Stack.Screen name="blacklist" options={{ headerShown: false }} />
+			<Stack.Screen name="ai" options={{ headerShown: false }} />
 			<Stack.Screen name="settings" options={{ headerShown: false }} />
 			<Stack.Screen name="sync" options={{ headerShown: false }} />
 			<Stack.Screen

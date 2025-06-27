@@ -161,6 +161,19 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 						hitSlop={16}
 						onPress={() => {
 							router.navigate({
+								pathname: '/(drawer)/blacklist'
+							});
+
+							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+						}}
+					>
+						<Label>Blacklist</Label>
+					</NavItem>
+
+					<NavItem
+						hitSlop={16}
+						onPress={() => {
+							router.navigate({
 								pathname: '/(drawer)/settings'
 							});
 
@@ -168,6 +181,19 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 						}}
 					>
 						<Label>Settings</Label>
+					</NavItem>
+
+					<NavItem
+						hitSlop={16}
+						onPress={() => {
+							router.navigate({
+								pathname: '/(drawer)/ai'
+							});
+
+							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+						}}
+					>
+						<Label>AI Scan</Label>
 					</NavItem>
 
 					<NavItem
