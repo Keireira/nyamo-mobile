@@ -1,5 +1,4 @@
 import type React from 'react';
-import type { ContextMenuProps } from 'react-native-context-menu-view';
 
 export type AccessorySwitchT = {
 	type: 'switch';
@@ -10,7 +9,7 @@ export type AccessorySwitchT = {
 export type AccessoryContextMenuT = {
 	type: 'context-menu';
 	children: React.ReactNode;
-} & ContextMenuProps;
+};
 
 export type AccessoryDrumrollT = {
 	type: 'drumroll';

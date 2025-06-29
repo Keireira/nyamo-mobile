@@ -1,23 +1,70 @@
 import React from 'react';
 
-import Switch from '../../switch';
-import ContextMenu from '../../context-menu';
+import { Pressable } from 'react-native';
+import { Switch, ContextMenu, Button, Picker } from '@expo/ui/swift-ui';
 import Root, { ListItemContent, ListItemLeft, ListItemRight, ListItemTitle, SwitchContainer } from './list-item.styles';
 
 import type { AccessoryContextMenuT, AccessorySwitchT, Props } from './list-item.d';
+import { Text } from '../../typography';
 
 const SwitchAccessory = ({ value, onPress }: AccessorySwitchT) => {
 	return (
 		<SwitchContainer>
-			<Switch checked={value} onCheckedChange={onPress} />
+			<Switch value={value} onValueChange={onPress} variant="switch" />
 		</SwitchContainer>
 	);
 };
 
-const ContextMenuAccessory = ({ actions, children, ...restProps }: AccessoryContextMenuT) => {
+const ContextMenuAccessory = ({ actions, trigger }: AccessoryContextMenuT) => {
 	return (
-		<ContextMenu actions={actions} {...restProps}>
-			{children}
+		<ContextMenu>
+			<ContextMenu.Items>
+				{actions.map((action) => {
+					if (action.type === 'button') {
+						return (
+							<Button key={action.id || action.title} systemImage={action.systemIcon} onPress={action.onPress}>
+								{action.title}
+							</Button>
+						);
+					}
+
+					if (action.type === 'picker') {
+						return (
+							<Picker
+								key={action.id || action.title}
+								label={action.title}
+								options={action.options}
+								variant="menu"
+								selectedIndex={action.selectedIndex}
+								onOptionSelected={action.onPress}
+							/>
+						);
+					}
+
+					return null;
+				})}
+			</ContextMenu.Items>
+
+			<ContextMenu.Trigger>
+				<Pressable
+					style={{
+						display: 'flex',
+						alignItems: 'flex-end',
+						justifyContent: 'center',
+						height: '100%'
+					}}
+				>
+					<Text
+						style={{
+							textAlign: 'right',
+							fontSize: 18,
+							color: '#666'
+						}}
+					>
+						{trigger || 'no'}
+					</Text>
+				</Pressable>
+			</ContextMenu.Trigger>
 		</ContextMenu>
 	);
 };

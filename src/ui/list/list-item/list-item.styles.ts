@@ -50,6 +50,6 @@ export default styled.TouchableHighlight`
 	align-items: center;
 	padding-vertical: 12px;
 	padding-horizontal: 16px;
-	min-height: 44px;
 	background-color: white;
+	height: 50px;
 `;

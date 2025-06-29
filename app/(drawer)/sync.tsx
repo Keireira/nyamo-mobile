@@ -4,7 +4,6 @@ import { Text, List, Wrapper } from '@ui';
 
 import type { NativeSyntheticEvent } from 'react-native';
 import type { Props as ListProps } from '@ui/list/list.d';
-import type { ContextMenuOnPressNativeEvent } from 'react-native-context-menu-view';
 
 const sections: ListProps['sections'] = [
 	{
@@ -16,14 +15,27 @@ const sections: ListProps['sections'] = [
 				title: 'Navidrome 1.16.0',
 				accessory: {
 					type: 'context-menu',
-					children: <Text style={{ fontSize: 18, color: '#666' }}>97 Folders</Text>,
+					trigger: '97',
 					actions: [
-						{ title: 'Fast scan', systemIcon: 'arrow.trianglehead.2.counterclockwise' },
-						{ title: 'Full scan', systemIcon: 'sparkle.magnifyingglass' }
-					],
-					onPress: (e: NativeSyntheticEvent<ContextMenuOnPressNativeEvent>) => {
-						console.log(e);
-					}
+						{
+							id: '111',
+							type: 'button',
+							title: 'Fast scan',
+							systemIcon: 'arrow.trianglehead.2.counterclockwise',
+							onPress: ({ nativeEvent }: NativeSyntheticEvent<unknown>) => {
+								console.log(nativeEvent);
+							}
+						},
+						{
+							id: '112',
+							type: 'button',
+							title: 'Full scan',
+							systemIcon: 'sparkle.magnifyingglass',
+							onPress: ({ nativeEvent }: NativeSyntheticEvent<unknown>) => {
+								console.log(nativeEvent);
+							}
+						}
+					]
 				}
 			},
 			{
@@ -31,14 +43,27 @@ const sections: ListProps['sections'] = [
 				title: 'Emby 4.10.0',
 				accessory: {
 					type: 'context-menu',
-					children: <Text style={{ fontSize: 18, color: '#666' }}>197 Folders</Text>,
+					trigger: '197 Folders',
 					actions: [
-						{ title: 'Fast scan', systemIcon: 'arrow.trianglehead.2.counterclockwise' },
-						{ title: 'Full scan', systemIcon: 'sparkle.magnifyingglass' }
-					],
-					onPress: (e: NativeSyntheticEvent<ContextMenuOnPressNativeEvent>) => {
-						console.log(e);
-					}
+						{
+							id: '121',
+							type: 'button',
+							title: 'Fast scan',
+							systemIcon: 'arrow.trianglehead.2.counterclockwise',
+							onPress: ({ nativeEvent }: NativeSyntheticEvent<ContextMenuOnPressNativeEvent>) => {
+								console.log(nativeEvent);
+							}
+						},
+						{
+							id: '122',
+							type: 'button',
+							title: 'Full scan',
+							systemIcon: 'sparkle.magnifyingglass',
+							onPress: ({ nativeEvent }: NativeSyntheticEvent<ContextMenuOnPressNativeEvent>) => {
+								console.log(nativeEvent);
+							}
+						}
+					]
 				}
 			}
 		]

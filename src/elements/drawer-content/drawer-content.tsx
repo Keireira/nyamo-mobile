@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { View, ScrollView, useWindowDimensions, Pressable, Image } from 'react-native';
+import { View, ScrollView, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaskedView from '@react-native-masked-view/masked-view';
 import * as Haptics from 'expo-haptics';
 import { usePathname, useRouter } from 'expo-router';
 import { useGravatarUrl } from '@hooks';
 
-import { Text, Switch, Avatar } from '@ui';
+import { Text, Avatar } from '@ui';
+import { Switch } from '@expo/ui/swift-ui';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import type { DrawerContentComponentProps } from '@react-navigation/drawer';
@@ -141,7 +142,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 					>
 						<Label>Offline mode</Label>
 
-						<Switch checked={value1} onCheckedChange={setValue1} />
+						<Switch value={value1} onValueChange={setValue1} variant="switch" />
 					</NavItem>
 
 					<NavItem

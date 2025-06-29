@@ -53,12 +53,32 @@ const SettingsScreen = () => {
 					title: 'Language',
 					accessory: {
 						type: 'context-menu',
-						children: <Text style={{ fontSize: 18, color: '#666' }}>English</Text>,
+						trigger: 'English',
 						actions: [
-							{ title: 'English (US)' },
-							{ title: 'Castellano', subtitle: 'Spanish' },
-							{ title: 'Русский', subtitle: 'Russian' },
-							{ title: 'Қазақша', subtitle: 'Kazakh' }
+							{
+								id: '111',
+								type: 'button',
+								title: 'English (US)',
+								onPress: () => console.log('English (US)')
+							},
+							{
+								id: '112',
+								type: 'button',
+								title: 'Castellano',
+								onPress: () => console.log('Castellano')
+							},
+							{
+								id: '113',
+								type: 'button',
+								title: 'Русский',
+								onPress: () => console.log('Русский')
+							},
+							{
+								id: '113',
+								type: 'button',
+								title: 'Қазақша',
+								onPress: () => console.log('Қазақша')
+							}
 						]
 					}
 				},
@@ -102,21 +122,21 @@ const SettingsScreen = () => {
 					title: 'Max Bitrate',
 					accessory: {
 						type: 'context-menu',
-						children: <Text style={{ fontSize: 18, color: '#666' }}>RAW</Text>,
+						trigger: 'RAW',
 						actions: [
-							{ title: 'RAW' },
 							{
+								id: '111',
+								type: 'button',
+								title: 'RAW',
+								onPress: () => console.log('RAW')
+							},
+							{
+								id: '112',
+								type: 'picker',
 								title: 'Compressed',
-								actions: [
-									{ title: '32 kbps' },
-									{ title: '64 kbps' },
-									{ title: '96 kbps' },
-									{ title: '128 kbps' },
-									{ title: '160 kbps' },
-									{ title: '192 kbps' },
-									{ title: '256 kbps' },
-									{ title: '320 kbps' }
-								]
+								selectedIndex: 0,
+								options: ['32 kbps', '64 kbps', '96 kbps', '128 kbps', '160 kbps', '192 kbps', '256 kbps', '320 kbps'],
+								onPress: ({ nativeEvent: { index } }) => console.log(index)
 							}
 						]
 					}
@@ -126,8 +146,27 @@ const SettingsScreen = () => {
 					title: 'Transcoding',
 					accessory: {
 						type: 'context-menu',
-						children: <Text style={{ fontSize: 18, color: '#666' }}>RAW</Text>,
-						actions: [{ title: 'RAW' }, { title: 'mp3' }]
+						trigger: 'RAW',
+						actions: [
+							{
+								id: '111',
+								type: 'button',
+								title: 'RAW',
+								onPress: () => console.log('RAW')
+							},
+							{
+								id: '112',
+								type: 'button',
+								title: 'mp3',
+								onPress: () => console.log('mp3')
+							},
+							{
+								id: '113',
+								type: 'button',
+								title: 'opus',
+								onPress: () => console.log('opus')
+							}
+						]
 					}
 				}
 			]
