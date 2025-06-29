@@ -28,4 +28,4 @@ const ListSectionComponent = ({ title, innerArray }: Props) => {
 	);
 };
 
-export default ListSectionComponent;
+export default React.memo(ListSectionComponent);

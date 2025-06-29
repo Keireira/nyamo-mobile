@@ -17,6 +17,8 @@ export const ListItemLeft = styled.View`
 export const ListItemRight = styled.View`
 	flex-direction: row;
 	align-items: center;
+	min-width: 51px;
+	justify-content: flex-end;
 `;
 
 export const ListItemTitle = styled(Text)`
@@ -43,7 +45,15 @@ export const ChevronIcon = styled(Text)`
 	margin-left: 8px;
 `;
 
-export const SwitchContainer = styled.View``;
+export const SwitchContainer = styled.View`
+	${'' /* So no switches are jumping when they are rendered */}
+	flex: 1;
+	min-height: 28px;
+	display: flex;
+	padding-right: 20px;
+	align-items: center;
+	justify-content: center;
+`;
 
 export default styled.TouchableHighlight`
 	flex-direction: row;

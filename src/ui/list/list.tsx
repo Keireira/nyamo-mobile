@@ -23,4 +23,4 @@ const List = ({ sections, style }: Props) => {
 	);
 };
 
-export default List;
+export default React.memo(List);

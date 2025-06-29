@@ -7,13 +7,13 @@ import Root, { ListItemContent, ListItemLeft, ListItemRight, ListItemTitle, Swit
 import type { AccessoryContextMenuT, AccessorySwitchT, Props } from './list-item.d';
 import { Text } from '../../typography';
 
-const SwitchAccessory = ({ value, onPress }: AccessorySwitchT) => {
+const SwitchAccessory = React.memo(({ value, onPress }: AccessorySwitchT) => {
 	return (
 		<SwitchContainer>
 			<Switch value={value} onValueChange={onPress} variant="switch" />
 		</SwitchContainer>
 	);
-};
+});
 
 const ContextMenuAccessory = ({ actions, trigger }: AccessoryContextMenuT) => {
 	return (
