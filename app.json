@@ -4,7 +4,7 @@
     "slug": "nyamo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/ios-light.png",
     "scheme": "nyamo",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -13,20 +13,11 @@
       "bundleIdentifier": "com.keireira.nyamo",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      }
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true,
-      "package": "com.keireira.nyamo"
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "icon": {
+        "dark": "./assets/images/ios-dark.png",
+        "light": "./assets/images/ios-light.png"
+      }
     },
     "plugins": [
       "expo-router",
@@ -50,6 +41,9 @@
       "eas": {
         "projectId": "dfa94c0d-e857-45d0-920b-64d961f3824c"
       }
+    },
+    "android": {
+      "package": "com.keireira.nyamo"
     }
   }
 }
