@@ -16,7 +16,7 @@ const SettingsScreen = () => {
 			title: 'General',
 			innerArray: [
 				{
-					id: '11',
+					id: 'qweqwe11',
 					title: 'Folder View',
 					accessory: {
 						type: 'switch',
@@ -25,7 +25,7 @@ const SettingsScreen = () => {
 					}
 				},
 				{
-					id: '12',
+					id: 'sdfds12',
 					title: 'Haptic Feedback',
 					accessory: {
 						type: 'switch',
@@ -34,7 +34,7 @@ const SettingsScreen = () => {
 					}
 				},
 				{
-					id: '13',
+					id: 'sdf13',
 					title: 'In-App Notifications',
 					accessory: {
 						type: 'switch',
@@ -49,14 +49,14 @@ const SettingsScreen = () => {
 			title: 'Appearance',
 			innerArray: [
 				{
-					id: '23',
+					id: '124323',
 					title: 'Language',
 					accessory: {
 						type: 'context-menu',
 						trigger: 'English',
 						actions: [
 							{
-								id: '111',
+								id: '123123111',
 								type: 'button',
 								title: 'English (US)',
 								onPress: () => {
@@ -64,7 +64,7 @@ const SettingsScreen = () => {
 								}
 							},
 							{
-								id: '112',
+								id: '245345112',
 								type: 'button',
 								title: 'Castellano',
 								onPress: () => {
@@ -72,7 +72,7 @@ const SettingsScreen = () => {
 								}
 							},
 							{
-								id: '113',
+								id: '234234113',
 								type: 'button',
 								title: 'Русский',
 								onPress: () => {
@@ -80,7 +80,7 @@ const SettingsScreen = () => {
 								}
 							},
 							{
-								id: '113',
+								id: '2222113',
 								type: 'button',
 								title: 'Қазақша',
 								onPress: () => {
@@ -162,13 +162,13 @@ const SettingsScreen = () => {
 						trigger: 'RAW',
 						actions: [
 							{
-								id: '111',
+								id: '41-111',
 								type: 'button',
 								title: 'RAW',
 								onPress: () => console.log('RAW')
 							},
 							{
-								id: '112',
+								id: '41-112',
 								type: 'picker',
 								title: 'Compressed',
 								selectedIndex: 0,
@@ -186,19 +186,19 @@ const SettingsScreen = () => {
 						trigger: 'RAW',
 						actions: [
 							{
-								id: '111',
+								id: '42-111',
 								type: 'button',
 								title: 'RAW',
 								onPress: () => console.log('RAW')
 							},
 							{
-								id: '112',
+								id: '42-112',
 								type: 'button',
 								title: 'mp3',
 								onPress: () => console.log('mp3')
 							},
 							{
-								id: '113',
+								id: '42-113',
 								type: 'button',
 								title: 'opus',
 								onPress: () => console.log('opus')

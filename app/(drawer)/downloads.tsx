@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
+import { scheduleNotificationAsync } from 'expo-notifications';
 
-import { Text } from '@ui';
-import { Picker } from '@expo/ui/swift-ui';
+import { Button } from '@expo/ui/swift-ui';
 
 const Root = styled.View`
 	flex: 1;
@@ -16,21 +16,21 @@ const Wrapper = styled.View`
 `;
 
 const DownloadsScreen = () => {
-	const [selectedIndex, setSelectedIndex] = useState(0);
+	const sendNotification = () => {
+		scheduleNotificationAsync({
+			content: {
+				title: 'Sync finished',
+				sound: false,
+				interruptionLevel: 'active'
+			},
+			trigger: null
+		});
+	};
 
 	return (
 		<Root>
 			<Wrapper>
-				<Text style={{ marginBottom: 16, fontSize: 24 }}>Selected: {selectedIndex}</Text>
-
-				<Picker
-					options={['$', '$$', '$$$', '$$$$']}
-					selectedIndex={selectedIndex}
-					onOptionSelected={({ nativeEvent: { index } }) => {
-						setSelectedIndex(index);
-					}}
-					variant="wheel"
-				/>
+				<Button onPress={sendNotification}>Send notification</Button>
 			</Wrapper>
 		</Root>
 	);

@@ -8,8 +8,18 @@ import { initialWindowMetrics, SafeAreaProvider } from 'react-native-safe-area-c
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import { TopBar, DrawerContent } from '@elements';
+import { setNotificationHandler } from 'expo-notifications';
 
 SplashScreen.preventAutoHideAsync();
+
+setNotificationHandler({
+	handleNotification: async () => ({
+		shouldShowBanner: true,
+		shouldShowList: true,
+		shouldPlaySound: false,
+		shouldSetBadge: false
+	})
+});
 
 const RootLayout = () => {
 	const { gate } = useFactoryModel(appModel);
