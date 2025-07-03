@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { Text, List, Wrapper } from '@ui';
+import { List, Wrapper } from '@ui';
 
-import type { NativeSyntheticEvent } from 'react-native';
 import type { Props as ListProps } from '@ui/list/list.d';
 
 const sections: ListProps['sections'] = [
@@ -22,8 +21,8 @@ const sections: ListProps['sections'] = [
 							type: 'button',
 							title: 'Fast scan',
 							systemIcon: 'arrow.trianglehead.2.counterclockwise',
-							onPress: ({ nativeEvent }: NativeSyntheticEvent<unknown>) => {
-								console.log(nativeEvent);
+							onPress: () => {
+								console.log('FIRE FAST SCAN');
 							}
 						},
 						{
@@ -31,8 +30,8 @@ const sections: ListProps['sections'] = [
 							type: 'button',
 							title: 'Full scan',
 							systemIcon: 'sparkle.magnifyingglass',
-							onPress: ({ nativeEvent }: NativeSyntheticEvent<unknown>) => {
-								console.log(nativeEvent);
+							onPress: () => {
+								console.log('FIRE FULL SCAN');
 							}
 						}
 					]
@@ -50,8 +49,8 @@ const sections: ListProps['sections'] = [
 							type: 'button',
 							title: 'Fast scan',
 							systemIcon: 'arrow.trianglehead.2.counterclockwise',
-							onPress: ({ nativeEvent }: NativeSyntheticEvent<ContextMenuOnPressNativeEvent>) => {
-								console.log(nativeEvent);
+							onPress: () => {
+								console.log('FIRE FAST SCAN');
 							}
 						},
 						{
@@ -59,8 +58,8 @@ const sections: ListProps['sections'] = [
 							type: 'button',
 							title: 'Full scan',
 							systemIcon: 'sparkle.magnifyingglass',
-							onPress: ({ nativeEvent }: NativeSyntheticEvent<ContextMenuOnPressNativeEvent>) => {
-								console.log(nativeEvent);
+							onPress: () => {
+								console.log('FIRE FULL SCAN');
 							}
 						}
 					]

@@ -1,19 +1,6 @@
 import styled from 'styled-components/native';
 import { Text } from '../../typography';
 
-export const ListItemContent = styled.View`
-	flex: 1;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-`;
-
-export const ListItemLeft = styled.View`
-	flex-direction: row;
-	align-items: center;
-	flex: 1;
-`;
-
 export const ListItemRight = styled.View`
 	flex-direction: row;
 	align-items: center;
@@ -27,32 +14,18 @@ export const ListItemTitle = styled(Text)`
 	font-weight: 400;
 `;
 
-export const ListItemSubtitle = styled(Text)`
-	font-size: 15px;
-	color: #8e8e93;
-	margin-top: 2px;
-`;
-
-export const ListItemDetail = styled(Text)`
-	font-size: 18px;
-	color: #8e8e93;
-	margin-right: 8px;
-`;
-
-export const ChevronIcon = styled(Text)`
-	font-size: 16px;
-	color: #c7c7cc;
-	margin-left: 8px;
-`;
-
-export const SwitchContainer = styled.View`
-	${'' /* So no switches are jumping when they are rendered */}
-	flex: 1;
-	min-height: 28px;
-	display: flex;
-	padding-right: 20px;
+export const ListItemLeft = styled.View`
+	flex-direction: row;
 	align-items: center;
-	justify-content: center;
+	flex: 1;
+	min-width: 50%;
+`;
+
+export const ListItemContent = styled.View`
+	flex: 1;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
 `;
 
 export default styled.TouchableHighlight`
