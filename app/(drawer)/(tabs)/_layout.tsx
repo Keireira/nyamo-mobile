@@ -2,8 +2,9 @@ import React from 'react';
 import * as Haptics from 'expo-haptics';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { SymbolView } from 'expo-symbols';
+import { BottomNavRoot, TabButton } from '@elements/bottom-nav';
 import { Tabs, TabSlot, TabList, TabTrigger } from 'expo-router/ui';
-import { BottomNavRoot, Icon, TabButton } from '@elements/bottom-nav';
 
 const TabLayout = () => {
 	const insets = useSafeAreaInsets();
@@ -21,7 +22,7 @@ const TabLayout = () => {
 								Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 							}}
 						>
-							<Icon name="musical-notes-outline" />
+							<SymbolView name="music.note" tintColor="white" type="hierarchical" />
 						</TabButton>
 					</TabTrigger>
 
@@ -32,7 +33,7 @@ const TabLayout = () => {
 								Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 							}}
 						>
-							<Icon name="albums-outline" />
+							<SymbolView name="rectangle.stack" tintColor="white" type="hierarchical" />
 						</TabButton>
 					</TabTrigger>
 
@@ -43,7 +44,7 @@ const TabLayout = () => {
 								Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 							}}
 						>
-							<Icon name="search-outline" />
+							<SymbolView name="magnifyingglass" tintColor="white" type="hierarchical" />
 						</TabButton>
 					</TabTrigger>
 				</BottomNavRoot>

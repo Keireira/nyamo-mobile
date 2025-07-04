@@ -5,7 +5,7 @@ import { usePathname } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import Root, { Title } from './top-bar.styles';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { SymbolView } from 'expo-symbols';
 
 import type { DrawerHeaderProps } from '@react-navigation/drawer';
 
@@ -61,7 +61,7 @@ const TopBar = (props: DrawerHeaderProps) => {
 					}
 				]}
 			>
-				<Ionicons name="disc-outline" size={24} color="white" />
+				<SymbolView name="opticaldisc" tintColor="white" type="hierarchical" />
 			</Pressable>
 		</Root>
 	);

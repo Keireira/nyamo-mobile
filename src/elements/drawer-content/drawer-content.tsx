@@ -11,8 +11,8 @@ import { Switch } from '@expo/ui/swift-ui';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import type { DrawerContentComponentProps } from '@react-navigation/drawer';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import styled from 'styled-components/native';
+import { SymbolView } from 'expo-symbols';
 
 const FadeEdgesView = ({ children, style }) => {
 	return (
@@ -222,7 +222,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 				>
 					{!['/', '/library', '/search'].includes(pathname) && (
 						<NavItem onPress={closeDrawer} hitSlop={16} style={{ justifyContent: 'flex-start' }}>
-							<Ionicons name="arrow-back" size={24} color="black" />
+							<SymbolView name="arrow.backward" tintColor="black" type="hierarchical" />
 							<ThickLabel>Home</ThickLabel>
 						</NavItem>
 					)}

@@ -9,6 +9,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Drawer } from 'expo-router/drawer';
 import { TopBar, DrawerContent } from '@elements';
 import { setNotificationHandler } from 'expo-notifications';
+import SqlMigrations from '@src/sql-migrations';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -47,6 +48,8 @@ const RootLayout = () => {
 	return (
 		<SafeAreaProvider initialMetrics={initialWindowMetrics}>
 			<GestureHandlerRootView style={{ flex: 1 }}>
+				<SqlMigrations />
+
 				<Drawer
 					screenOptions={{
 						header: (props) => <TopBar {...props} />,

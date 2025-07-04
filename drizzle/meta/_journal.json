@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1751636845954,
+      "tag": "0000_optimal_excalibur",
+      "breakpoints": true
+    }
+  ]
+}

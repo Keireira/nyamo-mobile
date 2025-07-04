@@ -4,7 +4,8 @@
 
 ```sh
 pnpm install
-npx pod-install
+npx drizzle-kit generate
+pnpm expo run:ios
 ```
 
 ### Wishbucket:

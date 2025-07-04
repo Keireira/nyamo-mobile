@@ -1,11 +1,5 @@
 import { BlurView } from 'expo-blur';
 import styled from 'styled-components/native';
-import Ionicons from '@expo/vector-icons/Ionicons';
-
-export const Icon = styled(Ionicons).attrs({
-	color: 'white',
-	size: 24
-})``;
 
 export const TabButton = styled.Pressable`
 	flex: 1;

@@ -1,1 +1,1 @@
-export { default as BottomNavRoot, Icon, TabButton } from './bottom-nav.styles';
+export { default as BottomNavRoot, TabButton } from './bottom-nav.styles';
