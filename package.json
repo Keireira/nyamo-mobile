@@ -10,6 +10,7 @@
     "lint": "expo lint"
   },
   "dependencies": {
+    "@config-plugins/apple-settings": "^5.0.0",
     "@expo/ui": "0.1.1-alpha.10",
     "@legendapp/list": "^1.1.4",
     "@react-native-masked-view/masked-view": "0.3.2",
@@ -23,6 +24,7 @@
     "effector": "^23.3.0",
     "effector-react": "^23.3.0",
     "expo": "~53.0.16",
+    "expo-application": "~6.1.5",
     "expo-blur": "~14.1.5",
     "expo-constants": "~17.1.6",
     "expo-crypto": "^14.1.5",
@@ -40,7 +42,7 @@
     "expo-sqlite": "~15.2.13",
     "expo-status-bar": "~2.2.3",
     "expo-symbols": "~0.4.5",
-    "expo-system-ui": "~5.0.8",
+    "expo-system-ui": "~5.0.10",
     "patronum": "^2.3.0",
     "ramda": "^0.31.3",
     "react": "19.0.0",

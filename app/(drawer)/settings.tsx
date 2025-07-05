@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
+import { Appearance, Settings } from 'react-native';
 
 import { Wrapper, List } from '@ui';
 
 import type { Props as ListProps } from '@ui/list/list.d';
 
 const SettingsScreen = () => {
-	const [value, setValue] = useState(false);
-	const [value2, setValue2] = useState(true);
-	const [value3, setValue3] = useState(true);
-	const [value4, setValue4] = useState(true);
+	const [isFolderView, setFolderView] = useState(() => Settings.get('folder_view'));
+	const [isExtendedFeedback, setExtendedFeedback] = useState(() => Settings.get('extended_feedback'));
+	const [isInAppNotifications, setInAppNotifications] = useState(() => Settings.get('in_app_notifications'));
+
+	const changeColorScheme = (isDarkMode: boolean) => {
+		Appearance.setColorScheme(isDarkMode ? 'dark' : 'light');
+		Settings.set({ theme: isDarkMode ? 'dark' : 'light' });
+	};
 
 	const sections: ListProps['sections'] = [
 		{
@@ -20,8 +25,11 @@ const SettingsScreen = () => {
 					title: 'Folder View',
 					accessory: {
 						type: 'switch',
-						value: value,
-						onPress: setValue
+						value: isFolderView,
+						onPress: (value: boolean) => {
+							Settings.set({ folder_view: value });
+							setFolderView(value);
+						}
 					}
 				},
 				{
@@ -29,8 +37,11 @@ const SettingsScreen = () => {
 					title: 'Haptic Feedback',
 					accessory: {
 						type: 'switch',
-						value: value2,
-						onPress: setValue2
+						value: isExtendedFeedback,
+						onPress: (value: boolean) => {
+							Settings.set({ extended_feedback: value });
+							setExtendedFeedback(value);
+						}
 					}
 				},
 				{
@@ -38,8 +49,11 @@ const SettingsScreen = () => {
 					title: 'In-App Notifications',
 					accessory: {
 						type: 'switch',
-						value: value3,
-						onPress: setValue3
+						value: isInAppNotifications,
+						onPress: (value: boolean) => {
+							Settings.set({ in_app_notifications: value });
+							setInAppNotifications(value);
+						}
 					}
 				}
 			]
@@ -95,8 +109,8 @@ const SettingsScreen = () => {
 					title: 'Dark Mode',
 					accessory: {
 						type: 'switch',
-						value: value4,
-						onPress: setValue4
+						value: Settings.get('theme') === 'dark',
+						onPress: changeColorScheme
 					}
 				}
 			]

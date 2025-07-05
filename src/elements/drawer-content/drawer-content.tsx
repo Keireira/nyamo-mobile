@@ -5,6 +5,7 @@ import MaskedView from '@react-native-masked-view/masked-view';
 import * as Haptics from 'expo-haptics';
 import { usePathname, useRouter } from 'expo-router';
 import { useGravatarUrl } from '@hooks';
+import * as Application from 'expo-application';
 
 import { Text, Avatar } from '@ui';
 import { Switch } from '@expo/ui/swift-ui';
@@ -228,7 +229,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 					)}
 
 					<View style={{ display: 'flex', flexDirection: 'row', gap: 8 }}>
-						<Text>v. 1.2.123</Text>
+						<Text>v. {Application.nativeApplicationVersion}</Text>
 						<Text>{'|'}</Text>
 						<Text>GitHub</Text>
 					</View>

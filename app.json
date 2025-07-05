@@ -11,6 +11,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.keireira.nyamo",
+      "userInterfaceStyle": "automatic",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       },
