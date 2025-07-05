@@ -40,3 +40,6 @@ app-example
 
 ios
 android
+
+# modules
+!modules/settings-bridge/ios

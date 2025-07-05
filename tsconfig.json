@@ -30,7 +30,10 @@
       "@types/*": ["./src/types/*"],
 
       "@ui": ["./src/ui"],
-      "@ui/*": ["./src/ui/*"]
+      "@ui/*": ["./src/ui/*"],
+
+      "@modules": ["./modules"],
+      "@modules/*": ["./modules/*"]
     }
   },
   "include": [

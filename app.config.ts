@@ -1,7 +1,8 @@
 import { default as withAppleSettings, RadioGroup, ChildPane } from '@config-plugins/apple-settings';
+
 import type { ExpoConfig, ConfigContext } from 'expo/config';
 
-export default ({ config }: ConfigContext): ExpoConfig => {
+const appConfig = ({ config }: ConfigContext): ExpoConfig => {
 	return withAppleSettings(config as ExpoConfig, {
 		Root: {
 			locales: {
@@ -70,3 +71,5 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 		}
 	});
 };
+
+export default appConfig;

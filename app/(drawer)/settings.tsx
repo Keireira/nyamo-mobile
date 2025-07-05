@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { Appearance, Settings } from 'react-native';
+import { Settings, useColorScheme } from 'react-native';
 
 import { Wrapper, List } from '@ui';
 
 import type { Props as ListProps } from '@ui/list/list.d';
 
 const SettingsScreen = () => {
+	const colorScheme = useColorScheme();
 	const [isFolderView, setFolderView] = useState(() => Settings.get('folder_view'));
 	const [isExtendedFeedback, setExtendedFeedback] = useState(() => Settings.get('extended_feedback'));
 	const [isInAppNotifications, setInAppNotifications] = useState(() => Settings.get('in_app_notifications'));
 
 	const changeColorScheme = (isDarkMode: boolean) => {
-		Appearance.setColorScheme(isDarkMode ? 'dark' : 'light');
 		Settings.set({ theme: isDarkMode ? 'dark' : 'light' });
 	};
 
@@ -109,7 +109,7 @@ const SettingsScreen = () => {
 					title: 'Dark Mode',
 					accessory: {
 						type: 'switch',
-						value: Settings.get('theme') === 'dark',
+						value: colorScheme === 'dark',
 						onPress: changeColorScheme
 					}
 				}

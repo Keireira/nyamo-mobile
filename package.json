@@ -2,6 +2,13 @@
   "name": "nyamo",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "license": "AGPL-3.0",
+  "author": "Alena Dzhukich <github@alena.red>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Keireira/nyamo-mobile.git"
+  },
+  "keywords": ["music", "streaming", "mobile", "react-native", "expo"],
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",

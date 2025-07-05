@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import appModel from '@models';
 import { useGate } from 'effector-react';
 import { useFonts } from 'expo-font';
@@ -10,8 +10,7 @@ import { Drawer } from 'expo-router/drawer';
 import { TopBar, DrawerContent } from '@elements';
 import { setNotificationHandler } from 'expo-notifications';
 import SqlMigrations from '@src/sql-migrations';
-import { Settings, AppState, Appearance } from 'react-native';
-import type { AppStateStatus } from 'react-native';
+import SyncSettings from '@src/sync-settings';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,55 +23,6 @@ setNotificationHandler({
 	})
 });
 
-const useThemeSettings = () => {
-	const [theme, setTheme] = useState('system');
-	const appState = useRef(AppState.currentState);
-
-	useEffect(() => {
-		const initialTheme = Settings.get('theme') || 'system';
-		setTheme(initialTheme);
-
-		const handleAppStateChange = (nextAppState: AppStateStatus) => {
-			if (appState.current.match(/inactive|background/) && nextAppState === 'active') {
-				const currentTheme = Settings.get('theme');
-
-				if (currentTheme !== theme) {
-					setTheme(currentTheme);
-					Appearance.setColorScheme(currentTheme);
-				}
-			}
-
-			appState.current = nextAppState;
-		};
-
-		const subscription = AppState.addEventListener('change', handleAppStateChange);
-
-		return () => subscription?.remove();
-	}, [theme]);
-};
-
-const useSetDefaultSettings = () => {
-	useThemeSettings();
-
-	useEffect(() => {
-		const isFolderView = Settings.get('folder_view');
-		const isExtendedFeedback = Settings.get('extended_feedback');
-		const isInAppNotifications = Settings.get('in_app_notifications');
-
-		if (isFolderView === undefined) {
-			Settings.set({ folder_view: false });
-		}
-
-		if (isExtendedFeedback === undefined) {
-			Settings.set({ extended_feedback: true });
-		}
-
-		if (isInAppNotifications === undefined) {
-			Settings.set({ in_app_notifications: true });
-		}
-	}, []);
-};
-
 const RootLayout = () => {
 	const { gate } = useFactoryModel(appModel);
 
@@ -81,8 +31,6 @@ const RootLayout = () => {
 		password: '4CmFMu#Pxd4dvbKjZaan',
 		serverUrl: 'http://192.168.31.31:4533'
 	});
-
-	useSetDefaultSettings();
 
 	const [loaded] = useFonts({
 		Nunito: require('@assets/fonts/Nunito/Nunito-VariableFont_wght.ttf')
@@ -102,6 +50,7 @@ const RootLayout = () => {
 		<SafeAreaProvider initialMetrics={initialWindowMetrics}>
 			<GestureHandlerRootView style={{ flex: 1 }}>
 				<SqlMigrations />
+				<SyncSettings />
 
 				<Drawer
 					screenOptions={{
