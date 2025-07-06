@@ -6,6 +6,7 @@ import * as Haptics from 'expo-haptics';
 import { usePathname, useRouter } from 'expo-router';
 import { useGravatarUrl } from '@hooks';
 import * as Application from 'expo-application';
+import { useTranslation } from 'react-i18next';
 
 import { Text, Avatar } from '@ui';
 import { Switch } from '@expo/ui/swift-ui';
@@ -53,6 +54,7 @@ const ThickLabel = styled(Text)`
 `;
 
 const DrawerContent = (props: DrawerContentComponentProps) => {
+	const { t } = useTranslation();
 	const router = useRouter();
 	const pathname = usePathname();
 	const gravatarUrl = useGravatarUrl('github@alena.red');
@@ -105,7 +107,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 						>
 							<Avatar
 								uri={gravatarUrl}
-								alt="User's avatar"
+								alt={t('drawer.user_avatar')}
 								fallback="A"
 								onPress={() => {
 									router.navigate({
@@ -118,7 +120,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 							/>
 
 							<Avatar
-								alt="Add new user"
+								alt={t('drawer.add_new_user')}
 								color="lightgray"
 								fallback="+"
 								onPress={() => {
@@ -141,7 +143,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
 						}}
 					>
-						<Label>Offline mode</Label>
+						<Label>{t('drawer.offline_mode')}</Label>
 
 						<Switch value={value1} onValueChange={setValue1} variant="switch" />
 					</NavItem>
@@ -156,7 +158,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 						}}
 					>
-						<Label>Downloads</Label>
+						<Label>{t('drawer.downloads')}</Label>
 					</NavItem>
 
 					<NavItem
@@ -169,7 +171,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 						}}
 					>
-						<Label>Blacklist</Label>
+						<Label>{t('drawer.blacklist')}</Label>
 					</NavItem>
 
 					<NavItem
@@ -182,7 +184,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 						}}
 					>
-						<Label>Settings</Label>
+						<Label>{t('drawer.settings')}</Label>
 					</NavItem>
 
 					<NavItem
@@ -195,7 +197,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 						}}
 					>
-						<Label>AI Scan</Label>
+						<Label>{t('drawer.ai_scan')}</Label>
 					</NavItem>
 
 					<NavItem
@@ -208,7 +210,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 							Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
 						}}
 					>
-						<Label>Sync</Label>
+						<Label>{t('drawer.sync')}</Label>
 					</NavItem>
 				</View>
 
@@ -224,7 +226,7 @@ const DrawerContent = (props: DrawerContentComponentProps) => {
 					{!['/', '/library', '/search'].includes(pathname) && (
 						<NavItem onPress={closeDrawer} hitSlop={16} style={{ justifyContent: 'flex-start' }}>
 							<SymbolView name="arrow.backward" tintColor="black" type="hierarchical" />
-							<ThickLabel>Home</ThickLabel>
+							<ThickLabel>{t('drawer.home')}</ThickLabel>
 						</NavItem>
 					)}
 

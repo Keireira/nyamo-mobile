@@ -11,6 +11,7 @@ import { TopBar, DrawerContent } from '@elements';
 import { setNotificationHandler } from 'expo-notifications';
 import SqlMigrations from '@src/sql-migrations';
 import SyncSettings from '@src/sync-settings';
+import '@src/i18n';
 
 SplashScreen.preventAutoHideAsync();
 

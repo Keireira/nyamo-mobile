@@ -1,6 +1,5 @@
 {
   "expo": {
-    "name": "Nyamo",
     "slug": "nyamo",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,20 +8,34 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "appleTeamId": "WU9ZX7QZRL",
       "supportsTablet": true,
       "bundleIdentifier": "com.keireira.nyamo",
       "userInterfaceStyle": "automatic",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "LSApplicationQueriesSchemes": ["nyamo", "нямо"],
+        "ITSAppUsesNonExemptEncryption": false,
+        "CFBundleAllowMixedLocalizations": true,
+        "NSUserNotificationsUsageDescription": "This app uses notifications to notify you of completed actions (scan, downloads) initiated by you",
+        "UIBackgroundModes": [
+          "audio"
+        ]
       },
       "icon": {
         "dark": "./assets/images/ios-dark.png",
         "light": "./assets/images/ios-light.png"
       }
     },
+    "locales": {
+      "en": "./assets/locales/en.json",
+      "ru": "./assets/locales/ru.json",
+      "es": "./assets/locales/es.json",
+      "kk": "./assets/locales/kk.json"
+    },
     "plugins": [
       "expo-router",
       "expo-dev-client",
+      "expo-localization",
       [
         "expo-splash-screen",
         {
@@ -30,6 +43,14 @@
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "react-native-permissions",
+        {
+          "iosPermissions": [
+            "Notifications"
+          ]
         }
       ],
       "expo-secure-store",
@@ -40,6 +61,8 @@
     },
     "extra": {
       "router": {},
+      "supportsRTL": false,
+      "forcesRTL": false,
       "eas": {
         "projectId": "dfa94c0d-e857-45d0-920b-64d961f3824c"
       }

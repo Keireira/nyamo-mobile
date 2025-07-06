@@ -84,7 +84,7 @@ The module uses Swift to monitor two key events:
 modules/settings-bridge/
 ├── src/
 │   ├── SettingsBridgeModule.ts    # TypeScript interface
-│   └── SettingsBridge.types.ts    # Type definitions
+│   └── SettingsBridge.d.ts        # Type definitions
 ├── ios/
 │   ├── SettingsBridgeModule.swift # Native iOS implementation
 │   └── SettingsBridge.podspec     # CocoaPods configuration

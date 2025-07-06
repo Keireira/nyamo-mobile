@@ -1,0 +1,22 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "Нямо"
+  },
+  "languages": {
+    "en": "Ағылшын",
+    "ru": "Орыс",
+    "es": "Испан",
+    "kk": "Қазақша"
+  },
+  "drawer": {
+    "user_avatar": "Пайдаланушының суреті",
+    "add_new_user": "Жаңа пайдаланушы қосу",
+    "offline_mode": "Офлайн",
+    "downloads": "Жүктемелер",
+    "blacklist": "Қараңғы тізім",
+    "settings": "Баптаулар",
+    "ai_scan": "AI сканер",
+    "sync": "Синхрондау",
+    "home": "Басты бет"
+  }
+}

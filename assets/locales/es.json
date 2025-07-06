@@ -1,0 +1,22 @@
+{
+  "ios": {
+    "CFBundleDisplayName": "Nyamo"
+  },
+  "languages": {
+    "en": "Inglés",
+    "ru": "Ruso",
+    "es": "Español",
+    "kk": "Kazajo"
+  },
+  "drawer": {
+    "user_avatar": "Avatar del usuario",
+    "add_new_user": "Agregar nuevo usuario",
+    "offline_mode": "Offline mode",
+    "downloads": "Descargas",
+    "blacklist": "Lista negra",
+    "settings": "Configuración",
+    "ai_scan": "Escaneo AI",
+    "sync": "Sincronizar",
+    "home": "Inicio"
+  }
+}

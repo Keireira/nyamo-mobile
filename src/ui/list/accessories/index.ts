@@ -6,3 +6,6 @@ export { default as DrumrollAccessory } from './drumroll';
 
 export * from './switch';
 export { default as SwitchAccessory } from './switch';
+
+export * from './plain-action';
+export { default as PlainActionAccessory } from './plain-action';

@@ -1,2 +1,2 @@
 export { default } from './src/SettingsBridgeModule';
-export * from './src/SettingsBridge.types';
+export * from './src/SettingsBridge.d';

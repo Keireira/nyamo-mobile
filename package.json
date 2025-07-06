@@ -8,7 +8,13 @@
     "type": "git",
     "url": "https://github.com/Keireira/nyamo-mobile.git"
   },
-  "keywords": ["music", "streaming", "mobile", "react-native", "expo"],
+  "keywords": [
+    "music",
+    "streaming",
+    "mobile",
+    "react-native",
+    "expo"
+  ],
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -42,6 +48,7 @@
     "expo-image": "~2.3.0",
     "expo-linear-gradient": "~14.1.5",
     "expo-linking": "~7.1.5",
+    "expo-localization": "~16.1.6",
     "expo-notifications": "~0.31.3",
     "expo-router": "~5.1.0",
     "expo-secure-store": "^14.2.3",
@@ -50,16 +57,20 @@
     "expo-status-bar": "~2.2.3",
     "expo-symbols": "~0.4.5",
     "expo-system-ui": "~5.0.10",
+    "i18next": "^25.3.1",
     "patronum": "^2.3.0",
     "ramda": "^0.31.3",
     "react": "19.0.0",
     "react-airplay": "^1.2.0",
     "react-dom": "19.0.0",
+    "react-i18next": "^15.6.0",
     "react-native": "0.79.5",
     "react-native-gesture-handler": "~2.24.0",
+    "react-native-permissions": "^5.4.1",
     "react-native-reanimated": "~3.17.5",
     "react-native-safe-area-context": "5.4.0",
     "react-native-screens": "~4.11.1",
+    "react-native-track-player": "^4.1.1",
     "styled-components": "^6.1.19"
   },
   "devDependencies": {

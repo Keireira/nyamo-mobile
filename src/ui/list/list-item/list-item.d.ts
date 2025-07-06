@@ -1,6 +1,11 @@
-import type { AccessoryContextMenuT, AccessorySwitchT, AccessoryDrumrollT } from '../accessories';
+import type {
+	AccessoryContextMenuT,
+	AccessorySwitchT,
+	AccessoryDrumrollT,
+	AccessoryPlainActionMenuT
+} from '../accessories';
 
-export type AccessoryT = AccessorySwitchT | AccessoryContextMenuT | AccessoryDrumrollT;
+export type AccessoryT = AccessorySwitchT | AccessoryContextMenuT | AccessoryDrumrollT | AccessoryPlainActionMenuT;
 
 export type Props = {
 	id: string;

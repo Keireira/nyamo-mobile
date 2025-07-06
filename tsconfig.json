@@ -33,7 +33,10 @@
       "@ui/*": ["./src/ui/*"],
 
       "@modules": ["./modules"],
-      "@modules/*": ["./modules/*"]
+      "@modules/*": ["./modules/*"],
+
+      "@locales": ["./assets/locales"],
+      "@locales/*": ["./assets/locales/*"]
     }
   },
   "include": [

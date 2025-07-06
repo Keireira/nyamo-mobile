@@ -15,7 +15,7 @@ const appConfig = ({ config }: ConfigContext): ExpoConfig => {
 				es: {
 					Theme: 'Tema'
 				},
-				kz: {
+				kk: {
 					Theme: 'Тема'
 				}
 			},
@@ -37,7 +37,7 @@ const appConfig = ({ config }: ConfigContext): ExpoConfig => {
 				},
 				ru: {
 					Theme: 'Тема',
-					UseDeviceAppearance: 'Использовать стандартную тему устройства',
+					UseDeviceAppearance: 'Следовать системной теме',
 					Light: 'Светлая',
 					Dark: 'Тёмная'
 				},
@@ -47,11 +47,11 @@ const appConfig = ({ config }: ConfigContext): ExpoConfig => {
 					Light: 'Claro',
 					Dark: 'Oscuro'
 				},
-				kz: {
+				kk: {
 					Theme: 'Тема',
 					UseDeviceAppearance: 'Құрылғының түсінігін қолдану',
 					Light: 'Жарық',
-					Dark: 'Қара'
+					Dark: 'Қараңғы'
 				}
 			},
 			page: {
