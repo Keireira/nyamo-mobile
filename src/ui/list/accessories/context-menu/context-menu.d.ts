@@ -1,24 +1,9 @@
-type ContextActionT = 'picker' | 'button';
-
-type ContextActionPickerT = {
-	id: string;
-	type: 'picker';
-	title: string;
-	selectedIndex: number;
-	options: string[];
-	onPress: (value: { nativeEvent: { index: number; label: string } }) => void;
-};
-
-type ContextActionButtonT = {
-	id: string;
-	type: 'button';
-	title: string;
-	systemIcon?: string;
-	onPress: () => void;
-};
+import type { NativeSyntheticEvent } from 'react-native';
+import type { ContextMenuAction, ContextMenuOnPressNativeEvent } from 'react-native-context-menu-view';
 
 export type AccessoryContextMenuT = {
 	type: 'context-menu';
 	trigger: string;
-	actions: (ContextActionPickerT | ContextActionButtonT)[];
+	onPress: (e: NativeSyntheticEvent<ContextMenuOnPressNativeEvent>) => void;
+	actions: ContextMenuAction[];
 };

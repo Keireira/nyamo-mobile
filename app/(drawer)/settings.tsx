@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import i18n from '@src/i18n';
 import * as Linking from 'expo-linking';
 import { useTranslation } from 'react-i18next';
-import { View, Settings, useColorScheme, ScrollView } from 'react-native';
+import { Settings, useColorScheme } from 'react-native';
 
 import { Wrapper, List } from '@ui';
 
@@ -25,18 +25,16 @@ const SettingsScreen = () => {
 	const { t } = useTranslation();
 	const colorScheme = useColorScheme();
 
-	console.log('colorScheme:', colorScheme, Settings.get('theme'));
-
 	const [isFolderView, setFolderView] = useState(() => {
 		const value = Settings.get('folder_view');
 
-		return value === 1;
+		return `${value}` === '1';
 	});
 
 	const [isInAppNotifications, setInAppNotifications] = useState(() => {
 		const value = Settings.get('in_app_notifications');
 
-		return value === 1;
+		return `${value}` === '1';
 	});
 
 	const [isDarkMode, setIsDarkMode] = useState(colorScheme === 'dark');
@@ -110,64 +108,6 @@ const SettingsScreen = () => {
 			]
 		},
 		{
-			id: 'streaming-section',
-			title: 'Streaming',
-			innerArray: [
-				{
-					id: 'streaming-max-bitrate',
-					title: 'Max Bitrate',
-					accessory: {
-						type: 'context-menu',
-						trigger: 'RAW',
-						actions: [
-							{
-								id: 'streaming-max-bitrate-raw',
-								type: 'button',
-								title: 'RAW',
-								onPress: () => console.log('RAW')
-							},
-							{
-								id: 'streaming-max-bitrate-compressed',
-								type: 'picker',
-								title: 'Compressed',
-								selectedIndex: 0,
-								options: BITRATE_OPTIONS,
-								onPress: ({ nativeEvent: { index } }) => console.log(index)
-							}
-						]
-					}
-				},
-				{
-					id: 'streaming-transcoding',
-					title: 'Transcoding',
-					accessory: {
-						type: 'context-menu',
-						trigger: 'RAW',
-						actions: [
-							{
-								id: 'streaming-transcoding-raw',
-								type: 'button',
-								title: 'RAW',
-								onPress: () => console.log('RAW')
-							},
-							{
-								id: 'streaming-transcoding-compressed',
-								type: 'button',
-								title: 'mp3',
-								onPress: () => console.log('mp3')
-							},
-							{
-								id: 'streaming-transcoding-opus',
-								type: 'button',
-								title: 'opus',
-								onPress: () => console.log('opus')
-							}
-						]
-					}
-				}
-			]
-		},
-		{
 			id: 'playback-section',
 			title: 'Playback',
 			innerArray: [
@@ -189,6 +129,44 @@ const SettingsScreen = () => {
 						trigger: '15 seconds',
 						onPress: ({ nativeEvent: { index } }) => console.log(SKIP_INTERVAL_OPTIONS[index]),
 						actions: SKIP_INTERVAL_OPTIONS
+					}
+				}
+			]
+		},
+		{
+			id: 'streaming-section',
+			title: 'Streaming',
+			innerArray: [
+				{
+					id: 'streaming-max-bitrate',
+					title: 'Max Bitrate',
+					accessory: {
+						type: 'context-menu',
+						trigger: 'RAW',
+						onPress: ({ nativeEvent }) => {
+							console.log(nativeEvent);
+						},
+						actions: [
+							{ title: 'RAW' },
+							{
+								title: 'Compressed',
+								actions: BITRATE_OPTIONS.map((option) => ({
+									title: option
+								}))
+							}
+						]
+					}
+				},
+				{
+					id: 'streaming-transcoding',
+					title: 'Transcoding',
+					accessory: {
+						type: 'context-menu',
+						trigger: 'RAW',
+						onPress: ({ nativeEvent }) => {
+							console.log(nativeEvent);
+						},
+						actions: [{ title: 'RAW' }, { title: 'mp3' }, { title: 'opus', disabled: true }]
 					}
 				}
 			]

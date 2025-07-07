@@ -1,45 +1,16 @@
 import React from 'react';
 
-import { ContextMenu, Button, Picker } from '@expo/ui/swift-ui';
+import ContextMenu from 'react-native-context-menu-view';
 import { Trigger, TriggerText } from './context-menu.styles';
 
 import type { AccessoryContextMenuT } from './context-menu.d';
 
-const ContextMenuAccessory = ({ actions, trigger }: AccessoryContextMenuT) => {
+const ContextMenuAccessory = ({ actions, trigger, onPress }: AccessoryContextMenuT) => {
 	return (
-		<ContextMenu activationMethod="singlePress">
-			<ContextMenu.Items>
-				{actions.map((action) => {
-					if (action.type === 'button') {
-						return (
-							<Button key={action.id || action.title} systemImage={action.systemIcon} onPress={action.onPress}>
-								{action.title}
-							</Button>
-						);
-					}
-
-					if (action.type === 'picker') {
-						return (
-							<Picker
-								key={action.id || action.title}
-								label={action.title}
-								options={action.options}
-								variant="menu"
-								selectedIndex={action.selectedIndex}
-								onOptionSelected={action.onPress}
-							/>
-						);
-					}
-
-					return null;
-				})}
-			</ContextMenu.Items>
-
-			<ContextMenu.Trigger>
-				<Trigger>
-					<TriggerText>{trigger}</TriggerText>
-				</Trigger>
-			</ContextMenu.Trigger>
+		<ContextMenu dropdownMenuMode actions={actions} onPress={onPress} fontName="Nunito">
+			<Trigger>
+				<TriggerText>{trigger}</TriggerText>
+			</Trigger>
 		</ContextMenu>
 	);
 };
