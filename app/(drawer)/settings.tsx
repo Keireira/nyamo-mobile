@@ -3,27 +3,73 @@ import React, { useEffect, useState } from 'react';
 import i18n from '@src/i18n';
 import * as Linking from 'expo-linking';
 import { useTranslation } from 'react-i18next';
-import { Settings, useColorScheme } from 'react-native';
+import SettingsBridgeModule from '@modules/settings-bridge';
 
 import { Wrapper, List } from '@ui';
+import { Settings, useColorScheme } from 'react-native';
+import { requestNotifications, checkNotifications, RESULTS } from 'react-native-permissions';
 
 import type { Props as ListProps } from '@ui/list/list.d';
+import type { PermissionStatus } from 'react-native-permissions';
+import type { AccessoryDrumrollOnPressEvent } from '@ui/list/accessories';
 
-const BITRATE_OPTIONS = ['32 kbps', '64 kbps', '96 kbps', '128 kbps', '160 kbps', '192 kbps', '256 kbps', '320 kbps'];
+const BITRATE_OPTIONS = [32, 64, 96, 128, 160, 192, 256, 320].map((value) => ({
+	title: `${value} kbps`,
+	value
+}));
+
 const CROSSFADE_OPTIONS = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((seconds) => ({
 	id: `playback-crossfade-${seconds}`,
 	value: seconds,
 	title: `${seconds} seconds`
 }));
+
 const SKIP_INTERVAL_OPTIONS = [5, 10, 15, 20, 30, 45].map((seconds) => ({
 	id: `playback-skip-interval-${seconds}`,
 	value: seconds,
 	title: `${seconds} seconds`
 }));
 
+const NOTIFICATION_STATUS_LABELS: Record<PermissionStatus, string> = {
+	[RESULTS.UNAVAILABLE]: '',
+	[RESULTS.DENIED]: 'Not requested',
+	[RESULTS.BLOCKED]: 'Denied',
+	[RESULTS.GRANTED]: 'All good',
+	[RESULTS.LIMITED]: 'All good'
+};
+
+const useGetNotificationStatus = () => {
+	const [notificationStatus, setNotificationStatus] = useState<PermissionStatus | null>(null);
+
+	const check = () => {
+		checkNotifications().then(({ status }) => {
+			setNotificationStatus(status);
+		});
+	};
+
+	useEffect(() => {
+		check();
+
+		SettingsBridgeModule.addListener('onNotificationChanged', (event) => {
+			check();
+		});
+
+		return () => {
+			SettingsBridgeModule.removeAllListeners('onNotificationChanged');
+		};
+	}, []);
+
+	return {
+		status: notificationStatus,
+		label: NOTIFICATION_STATUS_LABELS[notificationStatus ?? RESULTS.UNAVAILABLE]
+	};
+};
+
 const SettingsScreen = () => {
 	const { t } = useTranslation();
 	const colorScheme = useColorScheme();
+
+	const notificationStatus = useGetNotificationStatus();
 
 	const [isFolderView, setFolderView] = useState(() => {
 		const value = Settings.get('folder_view');
@@ -31,10 +77,26 @@ const SettingsScreen = () => {
 		return `${value}` === '1';
 	});
 
-	const [isInAppNotifications, setInAppNotifications] = useState(() => {
-		const value = Settings.get('in_app_notifications');
+	const [crossfade, setCrossfade] = useState(() => {
+		const value = Settings.get('crossfade');
 
-		return `${value}` === '1';
+		if (!value) {
+			Settings.set({ crossfade: 3 });
+			return 3;
+		}
+
+		return value;
+	});
+
+	const [skipInterval, setSkipInterval] = useState(() => {
+		const value = Settings.get('skip_interval');
+
+		if (!value) {
+			Settings.set({ skip_interval: 2 });
+			return 2;
+		}
+
+		return value;
 	});
 
 	const [isDarkMode, setIsDarkMode] = useState(colorScheme === 'dark');
@@ -46,6 +108,29 @@ const SettingsScreen = () => {
 	const changeColorScheme = (isDarkMode: boolean) => {
 		Settings.set({ theme: isDarkMode ? 'dark' : 'light' });
 		setIsDarkMode(isDarkMode);
+	};
+
+	const changeFolderView = (isFolderView: boolean) => {
+		Settings.set({ folder_view: isFolderView });
+		setFolderView(isFolderView);
+	};
+
+	const handleNotifications = () => {
+		if (notificationStatus.status === RESULTS.DENIED) {
+			requestNotifications();
+		} else if (notificationStatus.status === RESULTS.BLOCKED) {
+			Linking.openSettings();
+		}
+	};
+
+	const handleCrossfade = ({ nativeEvent: { index } }: AccessoryDrumrollOnPressEvent) => {
+		Settings.set({ crossfade: index });
+		setCrossfade(index);
+	};
+
+	const handleSkipInterval = ({ nativeEvent: { index } }: AccessoryDrumrollOnPressEvent) => {
+		Settings.set({ skip_interval: index });
+		setSkipInterval(index);
 	};
 
 	const openSettings = () => {
@@ -62,23 +147,18 @@ const SettingsScreen = () => {
 					title: 'Folder View',
 					accessory: {
 						type: 'switch',
+						disabled: true,
 						value: isFolderView,
-						onPress: (value: boolean) => {
-							Settings.set({ folder_view: value });
-							setFolderView(value);
-						}
+						onPress: changeFolderView
 					}
 				},
 				{
 					id: 'general-in-app-notifications',
-					title: 'In-App Notifications',
+					title: 'Notifications',
 					accessory: {
-						type: 'switch',
-						value: isInAppNotifications,
-						onPress: (value: boolean) => {
-							Settings.set({ in_app_notifications: value });
-							setInAppNotifications(value);
-						}
+						type: 'plain-action',
+						trigger: notificationStatus.label,
+						onPress: handleNotifications
 					}
 				}
 			]
@@ -116,8 +196,9 @@ const SettingsScreen = () => {
 					title: 'Crossfade',
 					accessory: {
 						type: 'drumroll',
-						trigger: '5 seconds',
-						onPress: ({ nativeEvent: { index } }) => console.log(CROSSFADE_OPTIONS[index]),
+						selectedIndex: crossfade,
+						trigger: CROSSFADE_OPTIONS[crossfade]?.title || 'Select...',
+						onPress: handleCrossfade,
 						actions: CROSSFADE_OPTIONS
 					}
 				},
@@ -126,8 +207,9 @@ const SettingsScreen = () => {
 					title: 'Skip Interval',
 					accessory: {
 						type: 'drumroll',
-						trigger: '15 seconds',
-						onPress: ({ nativeEvent: { index } }) => console.log(SKIP_INTERVAL_OPTIONS[index]),
+						selectedIndex: skipInterval,
+						trigger: SKIP_INTERVAL_OPTIONS[skipInterval]?.title || 'Select...',
+						onPress: handleSkipInterval,
 						actions: SKIP_INTERVAL_OPTIONS
 					}
 				}
@@ -150,9 +232,7 @@ const SettingsScreen = () => {
 							{ title: 'RAW' },
 							{
 								title: 'Compressed',
-								actions: BITRATE_OPTIONS.map((option) => ({
-									title: option
-								}))
+								actions: BITRATE_OPTIONS.map(({ title }) => ({ title }))
 							}
 						]
 					}

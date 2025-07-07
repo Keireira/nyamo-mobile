@@ -8,12 +8,12 @@ const SyncSettings = () => {
 
 		Appearance.setColorScheme(theme);
 
-		SettingsBridgeModule.addListener('onSettingsChanged', (event) => {
+		SettingsBridgeModule.addListener('onThemeChanged', (event) => {
 			Appearance.setColorScheme(event.newValue);
 		});
 
 		return () => {
-			SettingsBridgeModule.removeAllListeners('onSettingsChanged');
+			SettingsBridgeModule.removeAllListeners('onThemeChanged');
 		};
 	}, []);
 

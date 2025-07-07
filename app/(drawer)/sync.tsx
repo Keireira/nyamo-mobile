@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { List, Wrapper } from '@ui';
-// import { requestPermissionsAsync, scheduleNotificationAsync } from 'expo-notifications';
 
 import type { Props as ListProps } from '@ui/list/list.d';
 

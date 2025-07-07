@@ -5,10 +5,10 @@ import Root from './switch.styles';
 
 import type { AccessorySwitchT } from './switch.d';
 
-const SwitchAccessory = ({ value, onPress }: AccessorySwitchT) => {
+const SwitchAccessory = ({ value, disabled, onPress }: AccessorySwitchT) => {
 	return (
 		<Root>
-			<Switch value={value} onValueChange={onPress} hitSlop={20} />
+			<Switch value={value} onValueChange={onPress} hitSlop={20} disabled={disabled} />
 		</Root>
 	);
 };
