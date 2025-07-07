@@ -2,13 +2,12 @@ import React from 'react';
 
 import { LegendList } from '@legendapp/list';
 import ListSectionComponent from './list-section';
-
 import type { Props } from './list.d';
 import type { Props as ListSectionProps } from './list-section';
 import type { LegendListRenderItemProps } from '@legendapp/list';
 
 const renderItem = ({ item }: LegendListRenderItemProps<ListSectionProps>) => {
-	return <ListSectionComponent {...item} />;
+	return <ListSectionComponent key={item.id} {...item} />;
 };
 
 const List = ({ sections, style }: Props) => {
@@ -23,4 +22,4 @@ const List = ({ sections, style }: Props) => {
 	);
 };
 
-export default React.memo(List);
+export default List;

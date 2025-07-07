@@ -8,21 +8,27 @@ import type { Props } from './list-section.d';
 import type { Props as ListItemProps } from '../list-item';
 import type { LegendListRenderItemProps } from '@legendapp/list';
 
-const ListSectionComponent = ({ title, innerArray }: Props) => {
-	const renderItem = ({ item, index }: LegendListRenderItemProps<ListItemProps>) => {
-		return (
-			<GroupedListItem key={item.id} $isFirst={index === 0} $isLast={index === innerArray.length - 1}>
-				<ListItemComponent {...item} />
-			</GroupedListItem>
-		);
-	};
+const renderItem = ({ item, index, extraData }: LegendListRenderItemProps<ListItemProps>) => {
+	return (
+		<GroupedListItem key={item.id} $isFirst={index === 0} $isLast={index === extraData.arrLength - 1}>
+			<ListItemComponent {...item} />
+		</GroupedListItem>
+	);
+};
 
+const ListSectionComponent = ({ title, innerArray }: Props) => {
 	return (
 		<ListSection>
 			{Boolean(title) && <SectionHeader>{title}</SectionHeader>}
 
 			<GroupedListContainer>
-				<LegendList data={innerArray} renderItem={renderItem} keyExtractor={(item) => item.id} recycleItems />
+				<LegendList
+					data={innerArray}
+					renderItem={renderItem}
+					keyExtractor={(item) => item.id}
+					recycleItems={false}
+					extraData={{ arrLength: innerArray.length }}
+				/>
 			</GroupedListContainer>
 		</ListSection>
 	);

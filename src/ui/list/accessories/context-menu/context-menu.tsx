@@ -7,7 +7,7 @@ import type { AccessoryContextMenuT } from './context-menu.d';
 
 const ContextMenuAccessory = ({ actions, trigger }: AccessoryContextMenuT) => {
 	return (
-		<ContextMenu>
+		<ContextMenu activationMethod="singlePress">
 			<ContextMenu.Items>
 				{actions.map((action) => {
 					if (action.type === 'button') {

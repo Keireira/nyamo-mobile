@@ -6,7 +6,7 @@ import { Trigger, TriggerText } from './drumroll.styles';
 
 import type { AccessoryDrumrollT } from './drumroll.d';
 
-const DrumrollAccessory = ({ actions, trigger }: AccessoryDrumrollT) => {
+const DrumrollAccessory = ({ actions, trigger, onPress }: AccessoryDrumrollT) => {
 	const [isOpened, setIsOpened] = React.useState(false);
 
 	return (
@@ -16,7 +16,7 @@ const DrumrollAccessory = ({ actions, trigger }: AccessoryDrumrollT) => {
 					options={actions.map((action) => action.title)}
 					variant="wheel"
 					selectedIndex={0}
-					onOptionSelected={() => {}}
+					onOptionSelected={onPress}
 					style={{ height: 200 }}
 				/>
 			</BottomSheet>

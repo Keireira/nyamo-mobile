@@ -1,11 +1,10 @@
-type ItemValue = string | number;
-
 export type AccessoryDrumrollT = {
 	type: 'drumroll';
-	trigger: ItemValue;
+	trigger: string | number;
+	onPress: (event: { nativeEvent: { index: number; label: string } }) => void;
 	actions: {
 		id: string;
+		value: string | number;
 		title: string;
-		onPress: (value: ItemValue) => void;
 	}[];
 };
