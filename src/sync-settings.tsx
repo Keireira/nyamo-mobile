@@ -1,9 +1,13 @@
 import { useEffect } from 'react';
-import { Appearance } from 'react-native';
+import { Settings, Appearance } from 'react-native';
 import SettingsBridgeModule from '@modules/settings-bridge';
 
 const SyncSettings = () => {
 	useEffect(() => {
+		const theme = Settings.get('theme');
+
+		Appearance.setColorScheme(theme);
+
 		SettingsBridgeModule.addListener('onSettingsChanged', (event) => {
 			Appearance.setColorScheme(event.newValue);
 		});

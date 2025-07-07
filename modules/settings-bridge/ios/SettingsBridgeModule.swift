@@ -21,10 +21,7 @@ public class SettingsBridgeModule: Module {
 
 	public required init(appContext: AppContext) {
 		super.init(appContext: appContext)
-		configObserver()
-	}
 
-	private func configObserver() {
 		NotificationCenter.default.addObserver(
 			self,
 			selector: #selector(defaultValuesDidChange),
