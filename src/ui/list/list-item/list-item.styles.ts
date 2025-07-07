@@ -4,7 +4,6 @@ import { Text } from '../../typography';
 export const ListItemRight = styled.View`
 	flex-direction: row;
 	align-items: center;
-	min-width: 51px;
 	justify-content: flex-end;
 `;
 

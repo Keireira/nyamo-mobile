@@ -27,7 +27,9 @@ const ListSectionComponent = ({ title, innerArray }: Props) => {
 					renderItem={renderItem}
 					keyExtractor={(item) => item.id}
 					recycleItems={false}
-					extraData={{ arrLength: innerArray.length }}
+					extraData={{
+						arrLength: innerArray.length
+					}}
 				/>
 			</GroupedListContainer>
 		</ListSection>

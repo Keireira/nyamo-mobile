@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import i18n from '@src/i18n';
 import * as Linking from 'expo-linking';
 import { useTranslation } from 'react-i18next';
-import { Settings, useColorScheme } from 'react-native';
+import { View, Settings, useColorScheme, ScrollView } from 'react-native';
 
 import { Wrapper, List } from '@ui';
 
@@ -24,11 +24,30 @@ const SKIP_INTERVAL_OPTIONS = [5, 10, 15, 20, 30, 45].map((seconds) => ({
 const SettingsScreen = () => {
 	const { t } = useTranslation();
 	const colorScheme = useColorScheme();
-	const [isFolderView, setFolderView] = useState(() => Settings.get('folder_view'));
-	const [isInAppNotifications, setInAppNotifications] = useState(() => Settings.get('in_app_notifications'));
+
+	console.log('colorScheme:', colorScheme, Settings.get('theme'));
+
+	const [isFolderView, setFolderView] = useState(() => {
+		const value = Settings.get('folder_view');
+
+		return value === 1;
+	});
+
+	const [isInAppNotifications, setInAppNotifications] = useState(() => {
+		const value = Settings.get('in_app_notifications');
+
+		return value === 1;
+	});
+
+	const [isDarkMode, setIsDarkMode] = useState(colorScheme === 'dark');
+
+	useEffect(() => {
+		setIsDarkMode(colorScheme === 'dark');
+	}, [colorScheme]);
 
 	const changeColorScheme = (isDarkMode: boolean) => {
 		Settings.set({ theme: isDarkMode ? 'dark' : 'light' });
+		setIsDarkMode(isDarkMode);
 	};
 
 	const openSettings = () => {
@@ -66,7 +85,6 @@ const SettingsScreen = () => {
 				}
 			]
 		},
-
 		{
 			id: 'appearance-section',
 			title: 'Appearance',
@@ -85,13 +103,12 @@ const SettingsScreen = () => {
 					title: 'Dark Mode',
 					accessory: {
 						type: 'switch',
-						value: colorScheme === 'dark',
+						value: isDarkMode,
 						onPress: changeColorScheme
 					}
 				}
 			]
 		},
-
 		{
 			id: 'streaming-section',
 			title: 'Streaming',
@@ -150,7 +167,6 @@ const SettingsScreen = () => {
 				}
 			]
 		},
-
 		{
 			id: 'playback-section',
 			title: 'Playback',
