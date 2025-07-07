@@ -12,13 +12,22 @@ const DrumrollAccessory = ({ actions, trigger, onPress }: AccessoryDrumrollT) =>
 	return (
 		<View>
 			<BottomSheet isOpened={isOpened} onIsOpenedChange={setIsOpened}>
-				<Picker
-					options={actions.map((action) => action.title)}
-					variant="wheel"
-					selectedIndex={0}
-					onOptionSelected={onPress}
-					style={{ height: 200 }}
-				/>
+				{/*
+					Without setting height of the child, BottomSheet does not work correctly:
+					The further down we scroll, the smaller in height BottomSheet became.
+					Definitely a bug in the alpha version of expo/ui
+
+					@TODO: Check if it's fixed in the next version
+				*/}
+				<View style={{ minHeight: 200 }}>
+					<Picker
+						options={actions.map((action) => action.title)}
+						variant="wheel"
+						selectedIndex={0}
+						onOptionSelected={onPress}
+						style={{ minHeight: 200 }}
+					/>
+				</View>
 			</BottomSheet>
 
 			<Trigger onPress={() => setIsOpened(true)}>
